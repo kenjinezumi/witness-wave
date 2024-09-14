@@ -89,3 +89,66 @@ body {
     font-size: 1.4rem;
   }
   
+  /* Filter Section Styling */
+.filter-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #3c3c3c;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .filter-item {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1.5rem;
+  }
+  
+  .filter-item label {
+    color: #f5f5f5;
+    margin-bottom: 5px;
+  }
+  
+  .filter-item input, .filter-item select {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: none;
+    background-color: #2c2c2c;
+    color: #ffffff;
+  }
+  
+  .filter-item input[type="date"] {
+    width: 150px;
+  }
+  
+  .filter-item select {
+    width: 200px;
+  }
+  
+  .search {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search input {
+    width: 200px;
+    margin-right: 10px;
+  }
+  
+  .search button {
+    padding: 0.5rem 1rem;
+    background-color: #f1c40f;
+    color: #1e1e1e;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search button:hover {
+    background-color: #e63946;
+    color: #ffffff;
+  }
+  

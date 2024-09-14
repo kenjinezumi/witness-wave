@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactEcharts from 'echarts-for-react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import '../styles.css';
 
 const Home = () => {
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [incidentType, setIncidentType] = useState('');
+  const [searchLocation, setSearchLocation] = useState('');
+
+  // Function to update map based on search input
+  const handleSearch = () => {
+    if (searchLocation) {
+      alert(`Searching for location: ${searchLocation}`);
+    }
+  };
+
+  // Example chart options for statistics
   const getOptions = () => ({
     backgroundColor: '#1e1e1e',
     textStyle: {
@@ -42,9 +55,51 @@ const Home = () => {
 
   return (
     <div className="paper">
+      {/* Filter Section */}
+      <div className="filter-section">
+        <div className="filter-item">
+          <label>Date From:</label>
+          <input
+            type="date"
+            value={startDate}
+            onChange={(e) => setStartDate(e.target.value)}
+          />
+        </div>
+        <div className="filter-item">
+          <label>Date To:</label>
+          <input
+            type="date"
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
+          />
+        </div>
+        <div className="filter-item">
+          <label>Incident Type:</label>
+          <select
+            value={incidentType}
+            onChange={(e) => setIncidentType(e.target.value)}
+          >
+            <option value="">All Types</option>
+            <option value="physical-violence">Physical Violence</option>
+            <option value="verbal-abuse">Verbal Abuse</option>
+            <option value="racial-discrimination">Racial Discrimination</option>
+          </select>
+        </div>
+        <div className="filter-item search">
+          <label>Search Location:</label>
+          <input
+            type="text"
+            placeholder="Enter location"
+            value={searchLocation}
+            onChange={(e) => setSearchLocation(e.target.value)}
+          />
+          <button onClick={handleSearch}>Search</button>
+        </div>
+      </div>
+
       {/* Map Section */}
       <div className="map-section">
-        <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '100%', width: '100%' }} minZoom={3} maxZoom={18}>
+        <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '100%', width: '100%' }}>
           <TileLayer
             url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
@@ -57,13 +112,13 @@ const Home = () => {
         </MapContainer>
       </div>
 
-      {/* Stats Section */}
+      {/* Statistics Section */}
       <div className="stats-section">
         <div className="stats-item">
           <h3>Incidents by Month</h3>
           <ReactEcharts option={getOptions()} />
         </div>
-        {/* Add more stats items as needed */}
+        {/* You can add more stats items here */}
       </div>
     </div>
   );
