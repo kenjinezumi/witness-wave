@@ -1,23 +1,52 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Node modules
+node_modules/
+# Build output
+build/
+dist/
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# testing
-/coverage
+# Dependencies
+package-lock.json
+yarn.lock
 
-# production
-/build
+# Runtime data
+*.log
+*.pid
+*.pid.lock
 
-# misc
-.DS_Store
+# dotenv environment variables file
+.env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Editor directories and files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# MacOS specific file
+*.DS_Store
+
+# Lint and Formatting
+.eslintcache
+.prettierignore
+.prettiercache
+
+# Coverage directory used by testing tools
+coverage/
+
+# Miscellaneous
+*.tgz
+*.gz
+*.zip
