@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactEcharts from 'echarts-for-react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import '../styles.css';
 
@@ -9,12 +9,45 @@ const Home = () => {
   const [endDate, setEndDate] = useState('');
   const [incidentType, setIncidentType] = useState('');
   const [searchLocation, setSearchLocation] = useState('');
+  const [mapCenter, setMapCenter] = useState([51.505, -0.09]); // Default map center
+
+  // Function to query Nominatim API for geocoding
+  const searchLocationAPI = async (query) => {
+    try {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/search?q=${query}&format=json&limit=1`
+      );
+      const data = await response.json();
+      if (data.length > 0) {
+        const { lat, lon } = data[0];
+        return { lat: parseFloat(lat), lon: parseFloat(lon) };
+      } else {
+        alert('Location not found');
+        return null;
+      }
+    } catch (error) {
+      console.error('Error fetching location:', error);
+      return null;
+    }
+  };
 
   // Function to update map based on search input
-  const handleSearch = () => {
+  const handleSearch = async () => {
     if (searchLocation) {
-      alert(`Searching for location: ${searchLocation}`);
+      const coords = await searchLocationAPI(searchLocation);
+      if (coords) {
+        setMapCenter([coords.lat, coords.lon]); // Update map center based on search result
+      }
     }
+  };
+
+  // Helper component to move the map center
+  const SetMapCenter = ({ coords }) => {
+    const map = useMap();
+    if (coords) {
+      map.setView(coords, 13); // Update map center
+    }
+    return null;
   };
 
   // Example chart options for statistics
@@ -99,16 +132,17 @@ const Home = () => {
 
       {/* Map Section */}
       <div className="map-section">
-        <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '100%', width: '100%' }}>
+        <MapContainer center={mapCenter} zoom={13} style={{ height: '100%', width: '100%' }}>
           <TileLayer
             url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
           />
-          <Marker position={[51.505, -0.09]}>
+          <Marker position={mapCenter}>
             <Popup>
               Police Violence Incident <br /> Date: 2023-09-10.
             </Popup>
           </Marker>
+          <SetMapCenter coords={mapCenter} />
         </MapContainer>
       </div>
 
