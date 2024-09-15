@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactEcharts from 'echarts-for-react';
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMap, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import '../styles.css';
+import countries from './countries.json'; // List of countries
 
 const Home = () => {
   const [startDate, setStartDate] = useState('');
@@ -10,44 +11,73 @@ const Home = () => {
   const [incidentType, setIncidentType] = useState('');
   const [searchLocation, setSearchLocation] = useState('');
   const [mapCenter, setMapCenter] = useState([51.505, -0.09]); // Default map center
+  const [selectedCountry, setSelectedCountry] = useState(''); // Selected country
+  const [countriesGeoJSON, setCountriesGeoJSON] = useState(null); // GeoJSON for countries
+  const [countryBounds, setCountryBounds] = useState(null); // Bounding box for selected country
 
-  // Function to query Nominatim API for geocoding
-  const searchLocationAPI = async (query) => {
+  // Fetch GeoJSON data for countries on component mount
+  useEffect(() => {
+    const fetchCountriesGeoJSON = async () => {
+      const response = await fetch('https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson');
+      const data = await response.json();
+      setCountriesGeoJSON(data);
+    };
+
+    fetchCountriesGeoJSON();
+  }, []);
+
+  // Function to query Nominatim API for country geocoding and bounding box
+  const searchCountryAPI = async (country) => {
     try {
       const response = await fetch(
-        `https://nominatim.openstreetmap.org/search?q=${query}&format=json&limit=1`
+        `https://nominatim.openstreetmap.org/search?country=${country}&format=json&limit=1`
       );
       const data = await response.json();
       if (data.length > 0) {
-        const { lat, lon } = data[0];
-        return { lat: parseFloat(lat), lon: parseFloat(lon) };
+        const { lat, lon, boundingbox } = data[0];
+        const bounds = [
+          [parseFloat(boundingbox[0]), parseFloat(boundingbox[2])], // SouthWest corner
+          [parseFloat(boundingbox[1]), parseFloat(boundingbox[3])]  // NorthEast corner
+        ];
+        return { lat: parseFloat(lat), lon: parseFloat(lon), bounds };
       } else {
-        alert('Location not found');
+        alert('Country not found');
         return null;
       }
     } catch (error) {
-      console.error('Error fetching location:', error);
+      console.error('Error fetching country location:', error);
       return null;
     }
   };
 
-  // Function to update map based on search input
-  const handleSearch = async () => {
-    if (searchLocation) {
-      const coords = await searchLocationAPI(searchLocation);
-      if (coords) {
-        setMapCenter([coords.lat, coords.lon]); // Update map center based on search result
-      }
+  // Function to update map based on selected country
+  const handleCountrySelect = async (event) => {
+    const country = event.target.value;
+    setSelectedCountry(country);
+    const coords = await searchCountryAPI(country);
+    if (coords) {
+      setMapCenter([coords.lat, coords.lon]); // Update map center
+      setCountryBounds(coords.bounds); // Set country bounds for zoom/panning restriction
     }
   };
 
-  // Helper component to move the map center
-  const SetMapCenter = ({ coords }) => {
+  // Helper component to set map bounds
+  const SetMapBounds = ({ bounds }) => {
     const map = useMap();
-    if (coords) {
-      map.setView(coords, 13); // Update map center
+    if (bounds) {
+      map.fitBounds(bounds); // Fit the map to the selected country's bounds
+      map.setMaxBounds(bounds); // Restrict panning outside the bounds
     }
     return null;
+  };
+
+  // Highlight the selected country using GeoJSON layer
+  const highlightCountry = (feature) => {
+    return {
+      color: selectedCountry === feature.properties.ADMIN ? '#e63946' : '#ffffff',
+      weight: selectedCountry === feature.properties.ADMIN ? 3 : 1,
+      fillOpacity: selectedCountry === feature.properties.ADMIN ? 0.5 : 0.2,
+    };
   };
 
   // Example chart options for statistics
@@ -118,41 +148,42 @@ const Home = () => {
             <option value="racial-discrimination">Racial Discrimination</option>
           </select>
         </div>
-        <div className="filter-item search">
-          <label>Search Location:</label>
-          <input
-            type="text"
-            placeholder="Enter location"
-            value={searchLocation}
-            onChange={(e) => setSearchLocation(e.target.value)}
-          />
-          <button onClick={handleSearch}>Search</button>
+        {/* Country Dropdown */}
+        <div className="filter-item">
+          <label>Select Country:</label>
+          <select onChange={handleCountrySelect}>
+            <option value="">Choose a country</option>
+            {countries.map((country) => (
+              <option key={country} value={country}>
+                {country}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
 
       {/* Map Section */}
       <div className="map-section">
-      <MapContainer 
-  center={mapCenter} 
-  minZoom={3} 
-  maxZoom={8} 
-  zoom={5}  // Set default zoom level
-  style={{ height: '100%', width: '100%' }}
-  scrollWheelZoom={false}  // Optionally disable zooming with scroll
->
-        <TileLayer
-  url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-  minZoom={3}
-  maxZoom={8}
-/>
-
+        <MapContainer 
+          center={mapCenter} 
+          minZoom={3} 
+          maxZoom={8} 
+          zoom={5} 
+          style={{ height: '100%', width: '100%' }}
+        >
+          <TileLayer
+            url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+            attribution='&copy; OpenStreetMap contributors & CartoDB'
+          />
+          {countriesGeoJSON && (
+            <GeoJSON data={countriesGeoJSON} style={highlightCountry} />
+          )}
           <Marker position={mapCenter}>
             <Popup>
               Police Violence Incident <br /> Date: 2023-09-10.
             </Popup>
           </Marker>
-          <SetMapCenter coords={mapCenter} />
+          {countryBounds && <SetMapBounds bounds={countryBounds} />}
         </MapContainer>
       </div>
 
@@ -162,7 +193,6 @@ const Home = () => {
           <h3>Incidents by Month</h3>
           <ReactEcharts option={getOptions()} />
         </div>
-        {/* You can add more stats items here */}
       </div>
     </div>
   );
