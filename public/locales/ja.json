@@ -1,0 +1,13 @@
+{
+    "date_from": "開始日",
+    "date_to": "終了日",
+    "incident_type": "事件の種類",
+    "select_country": "国を選択",
+    "home": "ホーム",
+    "submit_event": "イベントを送信",
+    "search_location": "場所を検索",
+    "physical_violence": "身体的暴力",
+    "verbal_abuse": "言葉による虐待",
+    "racial_discrimination": "人種差別"
+  }
+  

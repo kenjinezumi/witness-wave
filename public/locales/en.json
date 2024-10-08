@@ -1,0 +1,13 @@
+{
+    "date_from": "Date From",
+    "date_to": "Date To",
+    "incident_type": "Incident Type",
+    "select_country": "Select Country",
+    "home": "Home",
+    "submit_event": "Submit Event",
+    "search_location": "Search Location",
+    "physical_violence": "Physical Violence",
+    "verbal_abuse": "Verbal Abuse",
+    "racial_discrimination": "Racial Discrimination"
+  }
+  

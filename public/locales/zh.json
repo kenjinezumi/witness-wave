@@ -1,0 +1,13 @@
+{
+    "date_from": "开始日期",
+    "date_to": "结束日期",
+    "incident_type": "事件类型",
+    "select_country": "选择国家",
+    "home": "首页",
+    "submit_event": "提交事件",
+    "search_location": "搜索位置",
+    "physical_violence": "身体暴力",
+    "verbal_abuse": "言语辱骂",
+    "racial_discrimination": "种族歧视"
+  }
+  

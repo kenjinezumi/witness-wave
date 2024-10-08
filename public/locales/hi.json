@@ -1,0 +1,13 @@
+{
+    "date_from": "प्रारंभ तिथि",
+    "date_to": "अंतिम तिथि",
+    "incident_type": "घटना प्रकार",
+    "select_country": "देश चुनें",
+    "home": "मुख्य पृष्ठ",
+    "submit_event": "घटना प्रस्तुत करें",
+    "search_location": "स्थान खोजें",
+    "physical_violence": "शारीरिक हिंसा",
+    "verbal_abuse": "मौखिक गाली",
+    "racial_discrimination": "नस्लीय भेदभाव"
+  }
+  
