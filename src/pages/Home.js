@@ -116,23 +116,11 @@ const Home = () => {
     ],
   });
 
-  // Chart options for incident types distribution
+  // Chart options for additional statistics
   const getIncidentTypeOptions = () => ({
+    title: { text: 'Incident Type Distribution', left: 'center', textStyle: { color: '#ffffff' } },
     backgroundColor: '#1e1e1e',
-    textStyle: {
-      color: '#f5f5f5',
-    },
-    title: {
-      text: 'Incident Type Distribution',
-      left: 'center',
-      textStyle: {
-        color: '#ffffff',
-      },
-    },
-    tooltip: {
-      trigger: 'item',
-      formatter: '{a} <br/>{b} : {c} ({d}%)',
-    },
+    textStyle: { color: '#f5f5f5' },
     series: [
       {
         name: 'Incident Type',
@@ -148,6 +136,176 @@ const Home = () => {
             const colors = ['#e63946', '#f5b041', '#76d7c4'];
             return colors[params.dataIndex];
           },
+        },
+      },
+    ],
+  });
+
+  const getDemographicsOptions = () => ({
+    title: { text: 'Incidents by Demographics', left: 'center', textStyle: { color: '#ffffff' } },
+    backgroundColor: '#1e1e1e',
+    textStyle: { color: '#f5f5f5' },
+    series: [
+      {
+        type: 'pie',
+        data: [
+          { value: 60, name: 'Men' },
+          { value: 40, name: 'Women' },
+        ],
+      },
+    ],
+  });
+
+  const getTimeOfDayOptions = () => ({
+    title: { text: 'Incidents by Time of Day', left: 'center', textStyle: { color: '#ffffff' } },
+    backgroundColor: '#1e1e1e',
+    textStyle: { color: '#f5f5f5' },
+    xAxis: {
+      type: 'category',
+      data: ['Morning', 'Afternoon', 'Evening', 'Night'],
+      axisLine: { lineStyle: { color: '#f5f5f5' } },
+      axisLabel: { color: '#f5f5f5' },
+    },
+    yAxis: {
+      type: 'value',
+      axisLine: { lineStyle: { color: '#f5f5f5' } },
+      axisLabel: { color: '#f5f5f5' },
+    },
+    series: [
+      {
+        name: 'Incidents',
+        type: 'bar',
+        data: [50, 100, 150, 75],
+        itemStyle: {
+          color: '#e63946',
+        },
+      },
+    ],
+  });
+
+  // Chart options for police involved violence, ethnicity of the victim, and weapon used
+  const getPoliceInvolvedOptions = () => ({
+    title: { text: 'Police Involved Violence', left: 'center', textStyle: { color: '#ffffff' } },
+    backgroundColor: '#1e1e1e',
+    textStyle: { color: '#f5f5f5' },
+    series: [
+      {
+        type: 'pie',
+        data: [
+          { value: 70, name: 'Involving Police' },
+          { value: 30, name: 'Not Involving Police' },
+        ],
+      },
+    ],
+  });
+
+  const getEthnicityOptions = () => ({
+    title: { text: 'Ethnicity of Victim', left: 'center', textStyle: { color: '#ffffff' } },
+    backgroundColor: '#1e1e1e',
+    textStyle: { color: '#f5f5f5' },
+    series: [
+      {
+        type: 'pie',
+        data: [
+          { value: 40, name: 'Black' },
+          { value: 30, name: 'Hispanic' },
+          { value: 20, name: 'White' },
+          { value: 10, name: 'Asian' },
+        ],
+      },
+    ],
+  });
+
+  const getWeaponUsedOptions = () => ({
+    title: { text: 'Weapon Used in Incident', left: 'center', textStyle: { color: '#ffffff' } },
+    backgroundColor: '#1e1e1e',
+    textStyle: { color: '#f5f5f5' },
+    series: [
+      {
+        type: 'pie',
+        data: [
+          { value: 50, name: 'Firearm' },
+          { value: 25, name: 'Taser' },
+          { value: 15, name: 'Baton' },
+          { value: 10, name: 'None' },
+        ],
+      },
+    ],
+  });
+
+  // Chart options for age group of victims, incident location types, injuries severity, and duration of incidents
+  const getAgeGroupOptions = () => ({
+    title: { text: 'Age Group of Victims', left: 'center', textStyle: { color: '#ffffff' } },
+    backgroundColor: '#1e1e1e',
+    textStyle: { color: '#f5f5f5' },
+    series: [
+      {
+        type: 'pie',
+        data: [
+          { value: 20, name: 'Children (0-17)' },
+          { value: 40, name: 'Young Adults (18-35)' },
+          { value: 25, name: 'Adults (36-60)' },
+          { value: 15, name: 'Elderly (60+)' },
+        ],
+      },
+    ],
+  });
+
+  const getLocationTypeOptions = () => ({
+    title: { text: 'Incident Location Types', left: 'center', textStyle: { color: '#ffffff' } },
+    backgroundColor: '#1e1e1e',
+    textStyle: { color: '#f5f5f5' },
+    series: [
+      {
+        type: 'pie',
+        data: [
+          { value: 30, name: 'Residential' },
+          { value: 25, name: 'Public Space' },
+          { value: 20, name: 'Commercial Area' },
+          { value: 25, name: 'Other' },
+        ],
+      },
+    ],
+  });
+
+  const getInjuriesSeverityOptions = () => ({
+    title: { text: 'Injuries Severity', left: 'center', textStyle: { color: '#ffffff' } },
+    backgroundColor: '#1e1e1e',
+    textStyle: { color: '#f5f5f5' },
+    series: [
+      {
+        type: 'pie',
+        data: [
+          { value: 50, name: 'Minor' },
+          { value: 30, name: 'Severe' },
+          { value: 20, name: 'Fatal' },
+        ],
+      },
+    ],
+  });
+
+  const getDurationOptions = () => ({
+    title: { text: 'Duration of Incidents', left: 'center', textStyle: { color: '#ffffff' } },
+    backgroundColor: '#1e1e1e',
+    textStyle: { color: '#f5f5f5' },
+    xAxis: {
+      type: 'category',
+      data: ['<10 mins', '10-30 mins', '>30 mins'],
+      axisLine: { lineStyle: { color: '#f5f5f5' } },
+      axisLabel: { color: '#f5f5f5' },
+    },
+    yAxis: {
+      type: 'value',
+      axisLine: { lineStyle: { color: '#f5f5f5' } },
+      axisLabel: { color: '#f5f5f5' },
+    },
+    series: [
+      {
+        name: 'Incidents',
+        type: 'bar',
+        data: [80, 100, 50],
+        itemStyle: {
+          color: '#e63946',
         },
       },
     ],
@@ -233,6 +391,42 @@ const Home = () => {
         <div className="stats-item">
           <h3>Distribution of Incident Types</h3>
           <ReactEcharts option={getIncidentTypeOptions()} />
+        </div>
+        <div className="stats-item">
+          <h3>Incidents by Demographics</h3>
+          <ReactEcharts option={getDemographicsOptions()} />
+        </div>
+        <div className="stats-item">
+          <h3>Incidents by Time of Day</h3>
+          <ReactEcharts option={getTimeOfDayOptions()} />
+        </div>
+        <div className="stats-item">
+          <h3>Police Involved Violence</h3>
+          <ReactEcharts option={getPoliceInvolvedOptions()} />
+        </div>
+        <div className="stats-item">
+          <h3>Ethnicity of Victim</h3>
+          <ReactEcharts option={getEthnicityOptions()} />
+        </div>
+        <div className="stats-item">
+          <h3>Weapon Used in Incident</h3>
+          <ReactEcharts option={getWeaponUsedOptions()} />
+        </div>
+        <div className="stats-item">
+          <h3>Age Group of Victims</h3>
+          <ReactEcharts option={getAgeGroupOptions()} />
+        </div>
+        <div className="stats-item">
+          <h3>Incident Location Types</h3>
+          <ReactEcharts option={getLocationTypeOptions()} />
+        </div>
+        <div className="stats-item">
+          <h3>Injuries Severity</h3>
+          <ReactEcharts option={getInjuriesSeverityOptions()} />
+        </div>
+        <div className="stats-item">
+          <h3>Duration of Incidents</h3>
+          <ReactEcharts option={getDurationOptions()} />
         </div>
       </div>
     </div>
