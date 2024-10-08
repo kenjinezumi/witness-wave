@@ -7,20 +7,20 @@ const Header = () => {
   return (
     <header className="header">
       <nav className="navbar">
-      <div className="logo">
-            <img src={logo} alt="WitnessWave Logo" className="logo-img" />
+        <div className="logo-container">
+          <img src={logo} alt="WitnessWave Logo" className="logo-img" />
+          <Link to="/" className="logo-text">WitnessWave</Link>
         </div>
-        <div className="logo">
-        
-          <Link to="/">WitnessWave</Link> {/* You can change this text */}
+        <div className="menu-container">
+         
+          <ul className="nav-links">
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/submit">Submit Event</Link></li>
+            <li><Link to="/map-explorer">Map Explorer</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
+          </ul>
         </div>
-        <ul className="nav-links">
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/submit">Submit Event</Link></li>
-          <li><Link to="/map-explorer">Map Explorer</Link></li> {/* New link */}
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
-        </ul>
       </nav>
     </header>
   );
