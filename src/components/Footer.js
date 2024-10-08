@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../Footer.css';
 
 const Footer = () => {
   const [theme, setTheme] = useState('light');
 
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
+
   const handleThemeClick = (newTheme) => {
     setTheme(newTheme);
-    // Implement logic to update the theme globally.
   };
 
   return (

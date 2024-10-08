@@ -1,44 +1,76 @@
+/* General Footer Styling */
 .footer {
-    background-color: #f8f9fa;
+    background-color: var(--footer-bg-color, #f8f9fa);
     padding: 20px;
     text-align: center;
     border-top: 1px solid #e9ecef;
-    margin-top: 20px;
-  }
-  
-  .legal-info {
+    width: 100%;
+    margin-top: auto;
+    z-index: 10;
+}
+
+/* Prevent Footer from Moving to Middle */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main {
+    flex: 1;
+}
+
+/* Legal Info Styling */
+.legal-info {
     margin-bottom: 10px;
     font-size: 0.9em;
-    color: #6c757d;
-  }
-  
-  .legal-info a {
+    color: var(--legal-info-color, #6c757d);
+}
+
+.legal-info a {
     color: #007bff;
     text-decoration: none;
     margin: 0 5px;
-  }
-  
-  .legal-info a:hover {
+}
+
+.legal-info a:hover {
     text-decoration: underline;
-  }
-  
-  .theme-selector {
+}
+
+/* Theme Selector Styling */
+.theme-selector {
     margin-top: 10px;
-  }
-  
-  .theme-option {
+}
+
+.theme-option {
     cursor: pointer;
     margin: 0 10px;
     padding: 5px 10px;
     border-radius: 5px;
     transition: background-color 0.3s;
-  }
-  
-  .theme-option.selected {
+}
+
+.theme-option.selected {
     background-color: #007bff;
     color: #fff;
-  }
-  
-  .theme-option:hover {
+}
+
+.theme-option:hover {
     background-color: #e2e6ea;
-  }
+}
+
+/* Light and Dark Theme Variables */
+body.light {
+    --footer-bg-color: #f8f9fa;
+    --legal-info-color: #6c757d;
+}
+
+body.dark {
+    --footer-bg-color: #343a40;
+    --legal-info-color: #adb5bd;
+}
