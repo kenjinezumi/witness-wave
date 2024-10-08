@@ -80,7 +80,7 @@ const Home = () => {
     };
   };
 
-  // Example chart options for statistics
+  // Example chart options for incidents by month
   const getOptions = () => ({
     backgroundColor: '#1e1e1e',
     textStyle: {
@@ -111,6 +111,43 @@ const Home = () => {
         data: [120, 200, 150, 80, 70, 110, 130],
         itemStyle: {
           color: '#e63946',
+        },
+      },
+    ],
+  });
+
+  // Chart options for incident types distribution
+  const getIncidentTypeOptions = () => ({
+    backgroundColor: '#1e1e1e',
+    textStyle: {
+      color: '#f5f5f5',
+    },
+    title: {
+      text: 'Incident Type Distribution',
+      left: 'center',
+      textStyle: {
+        color: '#ffffff',
+      },
+    },
+    tooltip: {
+      trigger: 'item',
+      formatter: '{a} <br/>{b} : {c} ({d}%)',
+    },
+    series: [
+      {
+        name: 'Incident Type',
+        type: 'pie',
+        radius: '50%',
+        data: [
+          { value: 335, name: 'Physical Violence' },
+          { value: 310, name: 'Verbal Abuse' },
+          { value: 234, name: 'Racial Discrimination' },
+        ],
+        itemStyle: {
+          color: (params) => {
+            const colors = ['#e63946', '#f5b041', '#76d7c4'];
+            return colors[params.dataIndex];
+          },
         },
       },
     ],
@@ -192,6 +229,10 @@ const Home = () => {
         <div className="stats-item">
           <h3>Incidents by Month</h3>
           <ReactEcharts option={getOptions()} />
+        </div>
+        <div className="stats-item">
+          <h3>Distribution of Incident Types</h3>
+          <ReactEcharts option={getIncidentTypeOptions()} />
         </div>
       </div>
     </div>

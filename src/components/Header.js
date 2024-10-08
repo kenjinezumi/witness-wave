@@ -17,6 +17,7 @@ const Header = () => {
         <ul className="nav-links">
           <li><Link to="/">Home</Link></li>
           <li><Link to="/submit">Submit Event</Link></li>
+          <li><Link to="/map-explorer">Map Explorer</Link></li> {/* New link */}
           <li><Link to="/about">About</Link></li>
           <li><Link to="/contact">Contact</Link></li>
         </ul>
