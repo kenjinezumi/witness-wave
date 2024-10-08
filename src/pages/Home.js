@@ -99,7 +99,6 @@ const Home = () => {
       color: document.body.classList.contains('dark') ? '#f5f5f5' : '#333',
     },
     title: {
-      text: 'Police Violence Statistics',
       left: 'center',
       textStyle: {
         color: document.body.classList.contains('dark') ? '#ffffff' : '#333',
