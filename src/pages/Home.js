@@ -311,6 +311,72 @@ const Home = () => {
     ],
   });
 
+  // Chart options for gender, declared sexual orientation, and religion
+  const getGenderOptions = () => ({
+    title: { text: 'Gender of Victims', left: 'center', textStyle: { color: '#ffffff' } },
+    backgroundColor: '#1e1e1e',
+    textStyle: { color: '#f5f5f5' },
+    series: [
+      {
+        type: 'pie',
+        data: [
+          { value: 60, name: 'Male' },
+          { value: 40, name: 'Female' },
+        ],
+      },
+    ],
+  });
+
+  const getSexualOrientationOptions = () => ({
+    title: { text: 'Declared Sexual Orientation', left: 'center', textStyle: { color: '#ffffff' } },
+    backgroundColor: '#1e1e1e',
+    textStyle: { color: '#f5f5f5' },
+    series: [
+      {
+        type: 'pie',
+        data: [
+          { value: 50, name: 'Heterosexual' },
+          { value: 30, name: 'Homosexual' },
+          { value: 20, name: 'Bisexual' },
+        ],
+      },
+    ],
+  });
+
+  const getReligionOptions = () => ({
+    title: { text: 'Religion of Victims', left: 'center', textStyle: { color: '#ffffff' } },
+    backgroundColor: '#1e1e1e',
+    textStyle: { color: '#f5f5f5' },
+    series: [
+      {
+        type: 'pie',
+        data: [
+          { value: 40, name: 'Christian' },
+          { value: 30, name: 'Muslim' },
+          { value: 20, name: 'Hindu' },
+          { value: 10, name: 'Other' },
+        ],
+      },
+    ],
+  });
+
+  // Chart options for resident status
+  const getResidentStatusOptions = () => ({
+    title: { text: 'Resident Status of Victims', left: 'center', textStyle: { color: '#ffffff' } },
+    backgroundColor: '#1e1e1e',
+    textStyle: { color: '#f5f5f5' },
+    series: [
+      {
+        type: 'pie',
+        data: [
+          { value: 50, name: 'Permanent Resident' },
+          { value: 30, name: 'Temporary Resident' },
+          { value: 20, name: 'Undocumented' },
+        ],
+      },
+    ],
+  });
+
   return (
     <div className="paper">
       {/* Filter Section */}
@@ -427,6 +493,22 @@ const Home = () => {
         <div className="stats-item">
           <h3>Duration of Incidents</h3>
           <ReactEcharts option={getDurationOptions()} />
+        </div>
+        <div className="stats-item">
+          <h3>Gender of Victims</h3>
+          <ReactEcharts option={getGenderOptions()} />
+        </div>
+        <div className="stats-item">
+          <h3>Declared Sexual Orientation</h3>
+          <ReactEcharts option={getSexualOrientationOptions()} />
+        </div>
+        <div className="stats-item">
+          <h3>Religion of Victims</h3>
+          <ReactEcharts option={getReligionOptions()} />
+        </div>
+        <div className="stats-item">
+          <h3>Resident Status of Victims</h3>
+          <ReactEcharts option={getResidentStatusOptions()} />
         </div>
       </div>
     </div>
