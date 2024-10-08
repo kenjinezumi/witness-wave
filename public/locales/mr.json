@@ -1,0 +1,13 @@
+{
+    "date_from": "सुरवातीची तारीख",
+    "date_to": "शेवटची तारीख",
+    "incident_type": "घटनेचा प्रकार",
+    "select_country": "देश निवडा",
+    "home": "मुख्य पृष्ठ",
+    "submit_event": "घटना सबमिट करा",
+    "search_location": "स्थान शोधा",
+    "physical_violence": "शारीरिक हिंसा",
+    "verbal_abuse": "तोंडी अपमान",
+    "racial_discrimination": "वांशिक भेदभाव"
+  }
+  

@@ -1,0 +1,13 @@
+{
+    "date_from": "Başlangıç Tarihi",
+    "date_to": "Bitiş Tarihi",
+    "incident_type": "Olay Türü",
+    "select_country": "Ülke Seç",
+    "home": "Ana Sayfa",
+    "submit_event": "Olayı Gönder",
+    "search_location": "Konum Ara",
+    "physical_violence": "Fiziksel Şiddet",
+    "verbal_abuse": "Sözlü Taciz",
+    "racial_discrimination": "Irk Ayrımcılığı"
+  }
+  

@@ -1,0 +1,13 @@
+{
+    "date_from": "วันที่เริ่มต้น",
+    "date_to": "วันที่สิ้นสุด",
+    "incident_type": "ประเภทเหตุการณ์",
+    "select_country": "เลือกประเทศ",
+    "home": "หน้าหลัก",
+    "submit_event": "ส่งเหตุการณ์",
+    "search_location": "ค้นหาตำแหน่ง",
+    "physical_violence": "ความรุนแรงทางกาย",
+    "verbal_abuse": "การล่วงละเมิดทางคำพูด",
+    "racial_discrimination": "การแบ่งแยกทางเชื้อชาติ"
+  }
+  

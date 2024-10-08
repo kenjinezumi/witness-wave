@@ -1,0 +1,13 @@
+{
+    "date_from": "Fecha de inicio",
+    "date_to": "Fecha de fin",
+    "incident_type": "Tipo de incidente",
+    "select_country": "Seleccionar país",
+    "home": "Inicio",
+    "submit_event": "Enviar evento",
+    "search_location": "Buscar ubicación",
+    "physical_violence": "Violencia física",
+    "verbal_abuse": "Abuso verbal",
+    "racial_discrimination": "Discriminación racial"
+  }
+s  

@@ -1,0 +1,13 @@
+{
+    "date_from": "Ngày bắt đầu",
+    "date_to": "Ngày kết thúc",
+    "incident_type": "Loại sự cố",
+    "select_country": "Chọn quốc gia",
+    "home": "Trang chủ",
+    "submit_event": "Gửi sự kiện",
+    "search_location": "Tìm kiếm vị trí",
+    "physical_violence": "Bạo lực thể xác",
+    "verbal_abuse": "Lạm dụng bằng lời nói",
+    "racial_discrimination": "Phân biệt chủng tộc"
+  }
+  

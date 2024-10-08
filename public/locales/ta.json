@@ -1,0 +1,13 @@
+{
+    "date_from": "தொடக்க தேதி",
+    "date_to": "முடிவு தேதி",
+    "incident_type": "நிகழ்வின் வகை",
+    "select_country": "நாட்டை தேர்வுசெய்க",
+    "home": "முகப்பு",
+    "submit_event": "நிகழ்வு சமர்ப்பிக்கவும்",
+    "search_location": "இடத்தைத் தேடுங்கள்",
+    "physical_violence": "உடல் வன்முறை",
+    "verbal_abuse": "வாய்வழி துஷ்பிரயோகம்",
+    "racial_discrimination": "இனம் பாகுபாடு"
+  }
+  
