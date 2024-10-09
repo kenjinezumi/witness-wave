@@ -46,7 +46,6 @@ const Analysis = ({ theme = 'light' }) => {
 
   return (
     <div className={`paper ${theme}`}>
-      <h1 style={{ textAlign: 'center', marginTop: '20px' }}>Analysis</h1>
 
       {/* Filter Section */}
       <div className="filter-section">

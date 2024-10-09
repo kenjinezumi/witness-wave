@@ -44,7 +44,6 @@ const SubmitEvent = ({ theme }) => {
 
   return (
     <div className={`submit-event-container ${theme}`}>
-      <h2 className={`submit-event-title ${theme}`}>Submit Event</h2>
       <div className="map-container">
         <MapContainer
           center={[51.505, -0.09]}

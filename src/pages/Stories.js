@@ -1,23 +1,56 @@
-import React, { useState, useEffect } from 'react';
-import 'leaflet/dist/leaflet.css';
+import React, { useState } from 'react';
+import { useSwipeable } from 'react-swipeable';
 import countries from './countries.json'; // List of countries
-import '../styles.css';
+import '../Stories.css';
+
+const storiesData = [
+  {
+    title: "The Stand Against Injustice",
+    description: "On a cold November evening, a group of protesters gathered to challenge systemic racism. Their chants echoed through the streets, pushing against the barriers of injustice. This is their story of resilience and hope.",
+  },
+  {
+    title: "A Voice Silenced",
+    description: "In the wake of growing unrest, this story highlights the bravery of a young woman who stood up for her rights, despite the overwhelming oppression. Her courage sparked change in her community.",
+  },
+  {
+    title: "The Fight for Equality",
+    description: "This powerful account details the struggles of a marginalized group in their fight against discrimination. Their persistence, even when ignored, serves as a reminder of the importance of equality.",
+  },
+  // Add more stories as needed...
+];
 
 const Stories = ({ theme = 'light' }) => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [incidentType, setIncidentType] = useState('');
-  const [selectedCountry, setSelectedCountry] = useState(''); // Selected country
+  const [selectedCountry, setSelectedCountry] = useState('');
+  const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
 
-  const handleCountrySelect = async (event) => {
+  const handleCountrySelect = (event) => {
     const country = event.target.value;
     setSelectedCountry(country);
-    // Additional functionality for selecting country can go here
+  };
+
+  // Swipe handlers for navigating stories
+  const handlers = useSwipeable({
+    onSwipedLeft: () => handleNext(),
+    onSwipedRight: () => handlePrevious(),
+  });
+
+  const handleNext = () => {
+    setCurrentStoryIndex((prevIndex) =>
+      prevIndex === storiesData.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const handlePrevious = () => {
+    setCurrentStoryIndex((prevIndex) =>
+      prevIndex === 0 ? storiesData.length - 1 : prevIndex - 1
+    );
   };
 
   return (
     <div className={`paper ${theme}`}>
-      <h1 style={{ textAlign: 'center', marginTop: '20px' }}>Stories</h1>
 
       {/* Filter Section */}
       <div className="filter-section">
@@ -52,7 +85,6 @@ const Stories = ({ theme = 'light' }) => {
             <option value="racial-discrimination">Racial Discrimination</option>
           </select>
         </div>
-        {/* Country Dropdown */}
         <div className="filter-item">
           <label>Select Country:</label>
           <select onChange={handleCountrySelect} value={selectedCountry} className={`filter-select ${theme}`}>
@@ -66,9 +98,20 @@ const Stories = ({ theme = 'light' }) => {
         </div>
       </div>
 
-      {/* Placeholder text for development */}
-      <div style={{ textAlign: 'center', marginTop: '50px' }}>
-        <h1 style={{ fontSize: '48px' }}>In development</h1>
+      {/* Swipeable Stories Section */}
+      <div {...handlers} className="stories-container">
+        <div className="story-card">
+          <h2>{storiesData[currentStoryIndex].title}</h2>
+          <p>{storiesData[currentStoryIndex].description}</p>
+        </div>
+        <div className="story-navigation">
+          <button onClick={handlePrevious} className={`nav-button prev-button ${theme}`}>
+            &#8592; Previous
+          </button>
+          <button onClick={handleNext} className={`nav-button next-button ${theme}`}>
+            Next &#8594;
+          </button>
+        </div>
       </div>
     </div>
   );
