@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import Accordion from 'react-bootstrap/Accordion';
 import 'leaflet/dist/leaflet.css';
-import '../styles.css'; // Import the CSS file for styling
+import '../submitEvent.css'; // Import the CSS file for styling
 
 const SubmitEvent = ({ theme }) => {
   const [position, setPosition] = useState(null);
@@ -43,8 +43,8 @@ const SubmitEvent = ({ theme }) => {
   };
 
   return (
-    <div className="submit-event-container">
-      <h2 className="submit-event-title">Submit Event</h2>
+    <div className={`submit-event-container ${theme}`}>
+      <h2 className={`submit-event-title ${theme}`}>Submit Event</h2>
       <div className="map-container">
         <MapContainer
           center={[51.505, -0.09]}
@@ -64,10 +64,11 @@ const SubmitEvent = ({ theme }) => {
         </MapContainer>
       </div>
 
-      <h3 className="add-event-title">Add an Event</h3> {/* Added black title */}
+      <h3 className={`add-event-title ${theme}`}>Add an Event</h3>
 
-      <div className="form-card">
-        <Accordion defaultActiveKey="0">
+      <div className={`form-card ${theme}`}>
+        <Accordion defaultActiveKey="0" className={theme}>
+          {/* Event Details */}
           <Accordion.Item eventKey="0">
             <Accordion.Header>Event Details</Accordion.Header>
             <Accordion.Body>
@@ -79,6 +80,7 @@ const SubmitEvent = ({ theme }) => {
                   value={form.eventName}
                   onChange={handleInputChange}
                   required
+                  className={theme}
                 />
               </div>
               <div className="form-group">
@@ -89,6 +91,7 @@ const SubmitEvent = ({ theme }) => {
                   value={form.date}
                   onChange={handleInputChange}
                   required
+                  className={theme}
                 />
               </div>
               <div className="form-group">
@@ -98,6 +101,7 @@ const SubmitEvent = ({ theme }) => {
                   value={form.description}
                   onChange={handleInputChange}
                   required
+                  className={theme}
                 />
               </div>
               <div className="form-group">
@@ -107,6 +111,7 @@ const SubmitEvent = ({ theme }) => {
                   value={form.incidentType}
                   onChange={handleInputChange}
                   required
+                  className={theme}
                 >
                   <option value="">Select Incident Type</option>
                   <option value="physical-violence">Physical Violence</option>
@@ -117,6 +122,7 @@ const SubmitEvent = ({ theme }) => {
             </Accordion.Body>
           </Accordion.Item>
 
+          {/* Demographics */}
           <Accordion.Item eventKey="1">
             <Accordion.Header>Demographics</Accordion.Header>
             <Accordion.Body>
@@ -127,6 +133,7 @@ const SubmitEvent = ({ theme }) => {
                   value={form.gender}
                   onChange={handleInputChange}
                   required
+                  className={theme}
                 >
                   <option value="">Select Gender</option>
                   <option value="male">Male</option>
@@ -141,6 +148,7 @@ const SubmitEvent = ({ theme }) => {
                   value={form.ethnicity}
                   onChange={handleInputChange}
                   required
+                  className={theme}
                 >
                   <option value="">Select Ethnicity</option>
                   <option value="black">Black</option>
@@ -153,6 +161,7 @@ const SubmitEvent = ({ theme }) => {
             </Accordion.Body>
           </Accordion.Item>
 
+          {/* Additional Information */}
           <Accordion.Item eventKey="2">
             <Accordion.Header>Additional Information</Accordion.Header>
             <Accordion.Body>
@@ -163,6 +172,7 @@ const SubmitEvent = ({ theme }) => {
                   value={form.weaponUsed}
                   onChange={handleInputChange}
                   required
+                  className={theme}
                 >
                   <option value="">Select Weapon Used</option>
                   <option value="firearm">Firearm</option>
@@ -179,6 +189,7 @@ const SubmitEvent = ({ theme }) => {
                   value={form.locationType}
                   onChange={handleInputChange}
                   required
+                  className={theme}
                 >
                   <option value="">Select Location Type</option>
                   <option value="residential">Residential</option>
@@ -190,6 +201,7 @@ const SubmitEvent = ({ theme }) => {
             </Accordion.Body>
           </Accordion.Item>
 
+          {/* Other Details */}
           <Accordion.Item eventKey="3">
             <Accordion.Header>Other Details</Accordion.Header>
             <Accordion.Body>
@@ -200,6 +212,7 @@ const SubmitEvent = ({ theme }) => {
                   value={form.residentStatus}
                   onChange={handleInputChange}
                   required
+                  className={theme}
                 >
                   <option value="">Select Resident Status</option>
                   <option value="permanent">Permanent Resident</option>
@@ -215,6 +228,7 @@ const SubmitEvent = ({ theme }) => {
                   value={form.religion}
                   onChange={handleInputChange}
                   required
+                  className={theme}
                 >
                   <option value="">Select Religion</option>
                   <option value="christian">Christian</option>
@@ -231,6 +245,7 @@ const SubmitEvent = ({ theme }) => {
                   value={form.sexualOrientation}
                   onChange={handleInputChange}
                   required
+                  className={theme}
                 >
                   <option value="">Select Sexual Orientation</option>
                   <option value="heterosexual">Heterosexual</option>
@@ -243,7 +258,7 @@ const SubmitEvent = ({ theme }) => {
         </Accordion>
 
         <div className="submit-button-container">
-          <button type="submit" className="submit-button">
+          <button type="submit" className={`submit-button ${theme}`}>
             Submit Event
           </button>
         </div>
