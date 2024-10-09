@@ -7,6 +7,9 @@ import SubmitEvent from './pages/SubmitEvent';
 import Contact from './pages/Contact';
 import About from './pages/About';
 import MapExplorer from './pages/MapExplorer';
+import Developer from './pages/Developer';
+import Analysis from './pages/Analysis';
+import Stories from './pages/Stories';
 
 function App() {
   const [theme, setTheme] = useState('light');
@@ -29,6 +32,9 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/map-explorer" element={<MapExplorer theme={theme}/>} />
+          <Route path="/developer" element={<Developer />} />
+          <Route path="/analysis" element={<Analysis />} />
+          <Route path="/stories" element={<Stories />} />
         </Routes>
       </div>
       <Footer theme={theme} handleThemeClick={handleThemeClick} />

@@ -17,6 +17,8 @@ const Header = () => {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/submit">Submit Event</Link></li>
             <li><Link to="/map-explorer">Map Explorer</Link></li>
+            <li><Link to="/stories">Witness Stories</Link></li>
+            <li><Link to="/analysis">Analysis</Link></li>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/contact">Contact</Link></li>
           </ul>
