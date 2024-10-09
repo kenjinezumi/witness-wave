@@ -10,6 +10,7 @@ import MapExplorer from './pages/MapExplorer';
 import Developer from './pages/Developer';
 import Analysis from './pages/Analysis';
 import Stories from './pages/Stories';
+import CookieConsent from './pages/CookieConsent';
 
 function App() {
   const [theme, setTheme] = useState('light');
@@ -35,6 +36,8 @@ function App() {
           <Route path="/developer" element={<Developer theme={theme}/>} />
           <Route path="/analysis" element={<Analysis theme={theme}/>} />
           <Route path="/stories" element={<Stories theme={theme}/>} />
+          <Route path="/cookie-policy" element={<CookieConsent/>} />
+
         </Routes>
       </div>
       <Footer theme={theme} handleThemeClick={handleThemeClick} />

@@ -1,0 +1,25 @@
+.cookie-consent {
+    background-color: rgba(240, 240, 240, 0.9); /* Light grey background for light theme */
+    color: #333; /* Dark text for light theme */
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .cookie-consent a {
+    color: #007BFF; /* Link color */
+    text-decoration: none;
+  }
+  
+  .cookie-consent a:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  
+  /* Dark theme styles */
+  body.dark .cookie-consent {
+    background-color: rgba(50, 50, 50, 0.9); /* Dark grey background for dark theme */
+    color: #f9f9f9; /* Light text for dark theme */
+  }
+  
