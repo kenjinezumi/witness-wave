@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
-const MapPage = () => {
+const SubmitEvent = ({ theme }) => {
   const [position, setPosition] = useState(null);
   const [form, setForm] = useState({
     eventName: '',
@@ -46,9 +46,14 @@ const MapPage = () => {
     <div>
       <h2>Submit Event</h2>
       <div style={{ height: '400px', marginBottom: '20px' }}>
-        <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '100%', width: '100%' }}>
+        <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '100%', width: '100%' }}
+          className={theme === 'dark' ? 'dark-map' : 'light-map'}>
           <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            url={
+              theme === 'dark'
+                ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png'
+                : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png'
+            }
           />
           <MapClickHandler />
           {position && (
@@ -185,4 +190,4 @@ const MapPage = () => {
   );
 };
 
-export default MapPage;
+export default SubmitEvent;
