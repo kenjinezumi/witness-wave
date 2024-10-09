@@ -19,13 +19,13 @@ const Header = () => {
               <Link to="/" className={location.pathname === '/' ? 'active-link' : ''}>Home</Link>
             </li>
             <li>
-              <Link to="/submit" className={location.pathname === '/submit' ? 'active-link' : ''}>Submit Event</Link>
+              <Link to="/submit" className={location.pathname === '/submit' ? 'active-link' : ''}>Tell us</Link>
             </li>
             <li>
               <Link to="/map-explorer" className={location.pathname === '/map-explorer' ? 'active-link' : ''}>Map Explorer</Link>
             </li>
             <li>
-              <Link to="/stories" className={location.pathname === '/stories' ? 'active-link' : ''}>Witness Stories</Link>
+              <Link to="/stories" className={location.pathname === '/stories' ? 'active-link' : ''}>Their Stories</Link>
             </li>
             <li>
               <Link to="/analysis" className={location.pathname === '/analysis' ? 'active-link' : ''}>Analysis</Link>

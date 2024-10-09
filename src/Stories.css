@@ -92,3 +92,11 @@ body.dark .nav-button {
         padding: 10px 20px;
     }
 }
+
+.story-card .date-location {
+    font-size: 14px; /* Set to your desired size */
+    color: var(--text-color); /* Ensure it adapts to light and dark themes */
+    margin-top: 5px; /* Add some spacing above */
+}
+
+  
