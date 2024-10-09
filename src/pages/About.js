@@ -1,9 +1,9 @@
 import React from 'react';
-import '../styles.css'; // Import the CSS for styling
+import '../about.css'; // Import the CSS for styling
 
-const About = () => {
+const About = ({ theme = 'light' }) => {
   return (
-    <div className="about-container">
+    <div className={`about-container ${theme}`}>
       <h1 className="about-title">About WitnessWave</h1>
       
       <p><strong>WitnessWave</strong> is a global platform dedicated to gathering and analyzing user-generated content (UGC) to document and report incidents of violence and discrimination. Our primary focus is on racial, gender, police, anti-immigration, and religious violence. The goal is not only to provide a voice to those affected but also to highlight the growing prevalence of these issues worldwide and drive meaningful change.</p>

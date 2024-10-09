@@ -469,35 +469,48 @@ textarea {
 .pgp-section a:hover {
   text-decoration: underline;
 }
-
-.about-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-}
-
-.about-title {
-  text-align: center;
-  font-size: 32px;
+/* Light Theme Styles */
+.about-container.light {
+  background-color: #ffffff;
   color: #333;
-  margin-bottom: 20px;
 }
 
-.about-subtitle {
-  font-size: 24px;
-  color: #444;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-p {
+.about-container.light p {
   font-size: 16px;
   color: #555;
-  margin-bottom: 15px;
 }
 
-strong {
+.about-container.light strong {
   color: #000;
+}
+
+.about-container.light .about-title {
+  color: #222;
+}
+
+.about-container.light .about-subtitle {
+  color: #444;
+}
+
+/* Dark Theme Styles */
+.about-container.dark {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+.about-container.dark p {
+  font-size: 16px;
+  color: #ccc;
+}
+
+.about-container.dark strong {
+  color: #fff;
+}
+
+.about-container.dark .about-title {
+  color: #f0f0f0;
+}
+
+.about-container.dark .about-subtitle {
+  color: #ddd;
 }

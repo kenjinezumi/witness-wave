@@ -29,12 +29,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Home theme={theme} />} />
           <Route path="/submit" element={<SubmitEvent theme={theme}/>} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact theme={theme}/>} />
+          <Route path="/about" element={<About theme={theme}/>} />
           <Route path="/map-explorer" element={<MapExplorer theme={theme}/>} />
-          <Route path="/developer" element={<Developer />} />
-          <Route path="/analysis" element={<Analysis />} />
-          <Route path="/stories" element={<Stories />} />
+          <Route path="/developer" element={<Developer theme={theme}/>} />
+          <Route path="/analysis" element={<Analysis theme={theme}/>} />
+          <Route path="/stories" element={<Stories theme={theme}/>} />
         </Routes>
       </div>
       <Footer theme={theme} handleThemeClick={handleThemeClick} />
