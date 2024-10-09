@@ -1,12 +1,16 @@
+/* General Body Styling */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: 1.6;
+}
+
 /* General Body Styling - Dark Theme */
 body.dark {
   background-color: #1e1e1e;
   color: #f5f5f5;
   font-family: 'Nunito Sans', sans-serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -15,11 +19,32 @@ body.light {
   background-color: #ffffff;
   color: #333;
   font-family: 'Roboto', sans-serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Theme-specific variables */
+body.light {
+  --filter-bg: #f0f0f0;
+  --input-bg: #ffffff;
+  --input-border: #ccc;
+  --input-border-hover: #007bff;
+  --input-border-focus: #e63946;
+  --dropdown-arrow: #333;
+  --dropdown-border: #ccc;
+  --stats-bg: #ffffff;
+  --stats-heading-color: #333;
+}
+
+body.dark {
+  --filter-bg: #3c3c3c;
+  --input-bg: #2c2c2c;
+  --input-border: #555;
+  --input-border-hover: #007bff;
+  --input-border-focus: #e63946;
+  --dropdown-arrow: #f5f5f5;
+  --dropdown-border: #555;
+  --stats-bg: #2c2c2c;
+  --stats-heading-color: #ffffff;
 }
 
 /* Paper Container */
@@ -33,7 +58,7 @@ body.light {
 
 /* Headings */
 h1, h2, h3 {
-  color: inherit;
+  color: inherit; /* Inherit color based on theme */
   font-weight: bold;
   margin-bottom: 10px;
   letter-spacing: 1px;
@@ -81,9 +106,7 @@ h1, h2, h3 {
 
 /* Stats Item Headings */
 .stats-item h3 {
-  color: var(--stats-heading-color, #e63946);
-  margin-bottom: 10px;
-  font-size: 1.4rem;
+  color: var(--stats-heading-color); /* Ensure heading color still follows theme */
 }
 
 /* Filter Section Styling */
@@ -119,7 +142,7 @@ h1, h2, h3 {
 .filter-item select {
   padding: 0.5rem;
   border-radius: 5px;
-  border: 2px solid var(--input-border, #666);
+  border: 2px solid var(--input-border);
   background-color: var(--input-bg);
   color: inherit;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
@@ -128,25 +151,25 @@ h1, h2, h3 {
 
 .filter-item input:hover,
 .filter-item select:hover {
-  border-color: var(--input-border-hover, #007bff);
+  border-color: var(--input-border-hover);
 }
 
 .filter-item input:focus,
 .filter-item select:focus {
   outline: none;
-  border-color: var(--input-border-focus, #e63946);
+  border-color: var(--input-border-focus);
 }
 
 /* Dropdown Styling */
 .filter-item select {
   width: 100%;
   cursor: pointer;
-  background-image: linear-gradient(45deg, transparent 50%, var(--dropdown-arrow, #007bff) 50%), linear-gradient(135deg, var(--dropdown-arrow, #007bff) 50%, transparent 50%);
+  background-image: linear-gradient(45deg, transparent 50%, var(--dropdown-arrow) 50%), linear-gradient(135deg, var(--dropdown-arrow) 50%, transparent 50%);
   background-position: calc(100% - 15px) calc(1em + 2px), calc(100% - 10px) calc(1em + 2px);
   background-size: 5px 5px, 5px 5px;
   background-repeat: no-repeat;
   appearance: none;
-  border: 1px solid var(--dropdown-border, #ccc);
+  border: 1px solid var(--dropdown-border);
   padding: 0.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -164,7 +187,7 @@ h1, h2, h3 {
   margin-right: 10px;
   padding: 0.5rem;
   border-radius: 5px;
-  border: 2px solid var(--input-border, #666);
+  border: 2px solid var(--input-border);
   background-color: var(--input-bg);
   color: inherit;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
@@ -172,12 +195,12 @@ h1, h2, h3 {
 }
 
 .search input:hover {
-  border-color: var(--input-border-hover, #007bff);
+  border-color: var(--input-border-hover);
 }
 
 .search input:focus {
   outline: none;
-  border-color: var(--input-border-focus, #e63946);
+  border-color: var(--input-border-focus);
 }
 
 .search button {
@@ -207,31 +230,6 @@ h1, h2, h3 {
   .stats-section {
     gap: 15px;
   }
-}
-
-/* Theme-specific variables */
-body.light {
-  --filter-bg: #f0f0f0;
-  --input-bg: #ffffff;
-  --input-border: #ccc;
-  --input-border-hover: #007bff;
-  --input-border-focus: #e63946;
-  --dropdown-arrow: #333;
-  --dropdown-border: #ccc;
-  --stats-bg: #ffffff;
-  --stats-heading-color: #333;
-}
-
-body.dark {
-  --filter-bg: #3c3c3c;
-  --input-bg: #2c2c2c;
-  --input-border: #555;
-  --input-border-hover: #007bff;
-  --input-border-focus: #e63946;
-  --dropdown-arrow: #f5f5f5;
-  --dropdown-border: #555;
-  --stats-bg: #2c2c2c;
-  --stats-heading-color: #e63946;
 }
 
 /* Footer Styling */
@@ -288,6 +286,7 @@ body.dark .footer {
 .theme-option:hover {
   background-color: #e2e6ea;
 }
+
 .sidebar {
   width: 300px;
   background: rgba(255, 255, 255, 0.9);
@@ -384,4 +383,3 @@ textarea {
   font-size: 24px;
   margin: 20px 0;
 }
-

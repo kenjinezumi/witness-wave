@@ -1,0 +1,89 @@
+/* PrivacyPolicy.css */
+
+/* General styling for the privacy policy */
+.privacy-policy {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.9); /* Light background for light theme */
+    color: #333; /* Text color for light theme */
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  body.dark .privacy-policy {
+    background-color: rgba(30, 30, 30, 0.9); /* Dark background for dark theme */
+    color: #f9f9f9; /* Text color for dark theme */
+  }
+  
+  /* Headings */
+  .privacy-policy h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    text-align: center;
+    color: inherit; /* Inherit color based on theme */
+  }
+  
+  .privacy-policy h2 {
+    font-size: 1.5em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: inherit; /* Inherit color based on theme */
+  }
+  
+  /* Paragraphs */
+  .privacy-policy p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: inherit; /* Inherit color based on theme */
+  }
+  
+  /* List styles */
+  .privacy-policy ul {
+    padding-left: 20px; /* Indentation for lists */
+  }
+  
+  .privacy-policy li {
+    margin-bottom: 8px; /* Space between list items */
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .privacy-policy {
+      padding: 15px; /* Adjust padding for smaller screens */
+    }
+  
+    .privacy-policy h1 {
+      font-size: 1.8em; /* Smaller heading for mobile */
+    }
+  
+    .privacy-policy h2 {
+      font-size: 1.4em; /* Smaller subheading for mobile */
+    }
+  
+    .privacy-policy p {
+      font-size: 0.9em; /* Smaller text for mobile */
+    }
+  }
+  
+  .accept-button-container {
+    text-align: center; /* Center the button */
+    margin-top: 20px; /* Add spacing above the button */
+}
+
+.accept-button {
+    background-color: #007BFF; /* Button color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding for button */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s ease; /* Transition for hover effect */
+}
+
+.accept-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
