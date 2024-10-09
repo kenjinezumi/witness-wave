@@ -22,6 +22,10 @@ const About = ({ theme = 'light' }) => {
 
       <h2 className="about-subtitle">Our Vision</h2>
       <p>Our long-term vision is to create a world where accountability and transparency are the norm, and where every individual has a voice in shaping a more just and equitable society. By bringing together the stories of those affected by violence and discrimination, we hope to drive conversations and actions that lead to real, lasting change.</p>
+
+      <h2 className="about-subtitle">Created By</h2>
+        <p>This project was brought to life by Kenji, a French software engineer who does his best to balance maintaining this platform with a full-time job. Currently based between Paris and London, and exploring new places when he can, Kenji hopes to contribute to understanding and connection in the ongoing fight for justice. In his spare time, he enjoys crafting terrible haikus that are just as concise as his attempts to keep up with everything!</p>
+
     </div>
   );
 };

@@ -46,7 +46,6 @@ const Analysis = ({ theme = 'light' }) => {
 
   return (
     <div className={`paper ${theme}`}>
-      <h1 style={{ textAlign: 'center', marginTop: '20px' }}>Analysis</h1>
 
       {/* Filter Section */}
       <div className="filter-section">
@@ -98,6 +97,10 @@ const Analysis = ({ theme = 'light' }) => {
       {/* Additional content such as charts and maps can be added here */}
       <div style={{ textAlign: 'center', marginTop: '50px' }}>
         <h1 style={{ fontSize: '48px' }}>In development</h1>
+        <h1 style={{ fontSize: '48px' }}>Coming Soon!!!!</h1>
+        <h1 style={{ fontSize: '48px' }}>KENJI WORKING ON IT!!!!</h1>
+
+
       </div>
     </div>
   );
