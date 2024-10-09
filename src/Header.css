@@ -9,6 +9,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 }
 
 .logo-container {
@@ -31,6 +32,7 @@
 /* Hamburger menu for mobile */
 .menu-container {
   position: relative;
+
 }
 
 .menu-toggle {
@@ -45,7 +47,7 @@
 .menu-icon .hamburger {
   width: 25px;
   height: 3px;
-  background-color: #333; /* Default light theme icon color */
+  background-color: transparent; /* Make navbar background transparent */
   margin: 5px 0;
   transition: 0.4s;
 }
@@ -55,6 +57,7 @@
   display: flex;
   list-style: none;
   gap: 20px;
+  
 }
 
 .nav-links a {
@@ -114,6 +117,10 @@ body.dark .header {
   background-color: #1e1e1e; /* Dark theme background */
 }
 
+body.dark .logo-text {
+  color: #f5f5f5; /* Dark theme background */
+}
+
 body.dark .nav-links a {
   color: #f5f5f5; /* Dark theme link color */
 }
@@ -127,7 +134,7 @@ body.dark .menu-icon .hamburger {
 }
 
 body.dark .nav-links {
-  background-color: #333; /* Dark theme dropdown background */
+  background-color: transparent; /* Make navbar background transparent */
 }
 
 /* Light theme */
