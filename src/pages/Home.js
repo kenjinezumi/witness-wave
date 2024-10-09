@@ -1,11 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import ReactEcharts from 'echarts-for-react';
 import { MapContainer, TileLayer, Marker, Popup, useMap, GeoJSON } from 'react-leaflet';
+import * as echarts from 'echarts';
 import 'leaflet/dist/leaflet.css';
 import '../styles.css';
 import countries from './countries.json'; // List of countries
+import darkTheme from './darkTheme.json';
+import lightTheme from './lightTheme.json';
 
-const Home = () => {
+echarts.registerTheme('dark', darkTheme);
+echarts.registerTheme('light', lightTheme);
+
+const Home = ({ theme = 'light' }) => {
+  
+
+  console.log('Rendering with theme:', theme);
+  useEffect(() => {
+    console.log('Current theme:', theme);
+  }, [theme]);
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [incidentType, setIncidentType] = useState('');
@@ -46,7 +58,7 @@ const Home = () => {
         const { lat, lon, boundingbox } = data[0];
         const bounds = [
           [parseFloat(boundingbox[0]), parseFloat(boundingbox[2])], // SouthWest corner
-          [parseFloat(boundingbox[1]), parseFloat(boundingbox[3])]  // NorthEast corner
+          [parseFloat(boundingbox[1]), parseFloat(boundingbox[3])], // NorthEast corner
         ];
         return { lat: parseFloat(lat), lon: parseFloat(lon), bounds };
       } else {
@@ -94,41 +106,27 @@ const Home = () => {
   // Example chart options for incidents by month
   const getOptions = () => ({
     responsive: true,
-    backgroundColor: document.body.classList.contains('dark') ? '#1e1e1e' : '#ffffff',
-    textStyle: {
-      color: document.body.classList.contains('dark') ? '#f5f5f5' : '#333',
-    },
     title: {
       left: 'center',
-      textStyle: {
-        color: document.body.classList.contains('dark') ? '#ffffff' : '#333',
-      },
     },
     xAxis: {
       type: 'category',
       data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-      axisLine: { lineStyle: { color: document.body.classList.contains('dark') ? '#f5f5f5' : '#333' } },
-      axisLabel: { color: document.body.classList.contains('dark') ? '#f5f5f5' : '#333' },
     },
     yAxis: {
       type: 'value',
-      axisLine: { lineStyle: { color: document.body.classList.contains('dark') ? '#f5f5f5' : '#333' } },
-      axisLabel: { color: document.body.classList.contains('dark') ? '#f5f5f5' : '#333' },
     },
     series: [
       {
         name: 'Incidents',
         type: 'bar',
         data: [120, 200, 150, 80, 70, 110, 130],
-        itemStyle: {
-          color: '#e63946',
-        },
       },
     ],
   });
 
   return (
-    <div className={`paper ${document.body.classList.contains('dark') ? 'dark' : 'light'}`}>
+    <div className={`paper ${theme}`}>
       {/* Filter Section */}
       <div className="filter-section">
         <div className="filter-item">
@@ -137,7 +135,7 @@ const Home = () => {
             type="date"
             value={startDate}
             onChange={(e) => setStartDate(e.target.value)}
-            className={`filter-input ${document.body.classList.contains('dark') ? 'dark' : 'light'}`}
+            className={`filter-input ${theme}`}
           />
         </div>
         <div className="filter-item">
@@ -146,7 +144,7 @@ const Home = () => {
             type="date"
             value={endDate}
             onChange={(e) => setEndDate(e.target.value)}
-            className={`filter-input ${document.body.classList.contains('dark') ? 'dark' : 'light'}`}
+            className={`filter-input ${theme}`}
           />
         </div>
         <div className="filter-item">
@@ -154,7 +152,7 @@ const Home = () => {
           <select
             value={incidentType}
             onChange={(e) => setIncidentType(e.target.value)}
-            className={`filter-select ${document.body.classList.contains('dark') ? 'dark' : 'light'}`}
+            className={`filter-select ${theme}`}
           >
             <option value="">All Types</option>
             <option value="physical-violence">Physical Violence</option>
@@ -165,7 +163,7 @@ const Home = () => {
         {/* Country Dropdown */}
         <div className="filter-item">
           <label>Select Country:</label>
-          <select onChange={handleCountrySelect} value={selectedCountry} className={`filter-select ${document.body.classList.contains('dark') ? 'dark' : 'light'}`}>
+          <select onChange={handleCountrySelect} value={selectedCountry} className={`filter-select ${theme}`}>
             <option value="">Choose a country</option>
             {countries.map((country) => (
               <option key={country} value={country}>
@@ -184,12 +182,13 @@ const Home = () => {
           maxZoom={8} 
           zoom={5} 
           style={{ height: '100%', width: '100%' }}
+          className={theme === 'dark' ? 'dark-map' : 'light-map'}
         >
           <TileLayer
             url={
-              document.body.classList.contains('dark')
-                ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-                : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
+              theme === 'dark'
+                ? (() => { console.log('Dark theme URL selected'); return 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png?v=1'; })()
+                : (() => { console.log('Light theme URL selected'); return 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png?v=1'; })()
             }
             attribution='&copy; OpenStreetMap contributors & CartoDB'
           />
@@ -209,63 +208,63 @@ const Home = () => {
       <div className="stats-section">
         <div className="stats-item">
           <h3>Incidents by Month</h3>
-          <ReactEcharts option={getOptions()} />
+          <ReactEcharts option={getOptions()} theme={theme} />
         </div>
         <div className="stats-item">
           <h3>Distribution of Incident Types</h3>
-          <ReactEcharts option={getOptions()} />
+          <ReactEcharts option={getOptions()} theme={theme} />
         </div>
         <div className="stats-item">
           <h3>Incidents by Demographics</h3>
-          <ReactEcharts option={getOptions()} />
+          <ReactEcharts option={getOptions()} theme={theme} />
         </div>
         <div className="stats-item">
           <h3>Incidents by Time of Day</h3>
-          <ReactEcharts option={getOptions()} />
+          <ReactEcharts option={getOptions()} theme={theme} />
         </div>
         <div className="stats-item">
           <h3>Police Involved Violence</h3>
-          <ReactEcharts option={getOptions()} />
+          <ReactEcharts option={getOptions()} theme={theme} />
         </div>
         <div className="stats-item">
           <h3>Ethnicity of Victim</h3>
-          <ReactEcharts option={getOptions()} />
+          <ReactEcharts option={getOptions()} theme={theme} />
         </div>
         <div className="stats-item">
           <h3>Weapon Used in Incident</h3>
-          <ReactEcharts option={getOptions()} />
+          <ReactEcharts option={getOptions()} theme={theme} />
         </div>
         <div className="stats-item">
           <h3>Age Group of Victims</h3>
-          <ReactEcharts option={getOptions()} />
+          <ReactEcharts option={getOptions()} theme={theme} />
         </div>
         <div className="stats-item">
           <h3>Incident Location Types</h3>
-          <ReactEcharts option={getOptions()} />
+          <ReactEcharts option={getOptions()} theme={theme} />
         </div>
         <div className="stats-item">
           <h3>Injuries Severity</h3>
-          <ReactEcharts option={getOptions()} />
+          <ReactEcharts option={getOptions()} theme={theme} />
         </div>
         <div className="stats-item">
           <h3>Duration of Incidents</h3>
-          <ReactEcharts option={getOptions()} />
+          <ReactEcharts option={getOptions()} theme={theme} />
         </div>
         <div className="stats-item">
           <h3>Gender of Victims</h3>
-          <ReactEcharts option={getOptions()} />
+          <ReactEcharts option={getOptions()} theme={theme} />
         </div>
         <div className="stats-item">
           <h3>Declared Sexual Orientation</h3>
-          <ReactEcharts option={getOptions()} />
+          <ReactEcharts option={getOptions()} theme={theme} />
         </div>
         <div className="stats-item">
           <h3>Religion of Victims</h3>
-          <ReactEcharts option={getOptions()} />
+          <ReactEcharts option={getOptions()} theme={theme} />
         </div>
         <div className="stats-item">
           <h3>Resident Status of Victims</h3>
-          <ReactEcharts option={getOptions()} />
+          <ReactEcharts option={getOptions()} theme={theme} />
         </div>
       </div>
     </div>
