@@ -1,25 +1,47 @@
+/* General styling for the cookie consent */
 .cookie-consent {
-    background-color: rgba(240, 240, 240, 0.9); /* Light grey background for light theme */
-    color: #333; /* Dark text for light theme */
-    padding: 15px;
-    margin: 20px 0;
-    border-radius: 5px;
-    font-size: 16px;
-    line-height: 1.5;
-  }
-  
-  .cookie-consent a {
-    color: #007BFF; /* Link color */
-    text-decoration: none;
-  }
-  
-  .cookie-consent a:hover {
-    text-decoration: underline; /* Underline on hover */
-  }
-  
-  /* Dark theme styles */
-  body.dark .cookie-consent {
-    background-color: rgba(50, 50, 50, 0.9); /* Dark grey background for dark theme */
-    color: #f9f9f9; /* Light text for dark theme */
-  }
-  
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.9); /* Light background for light theme */
+    color: #333; /* Text color for light theme */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark .cookie-consent {
+    background-color: rgba(30, 30, 30, 0.9); /* Dark background for dark theme */
+    color: #f9f9f9; /* Text color for dark theme */
+}
+
+/* Headings */
+.cookie-consent h3 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    text-align: center;
+    color: inherit; /* Inherit color based on theme */
+}
+
+/* Paragraphs */
+.cookie-consent p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: inherit; /* Inherit color based on theme */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .cookie-consent {
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    .cookie-consent h3 {
+        font-size: 1.8em; /* Smaller heading for mobile */
+    }
+
+    .cookie-consent p {
+        font-size: 0.9em; /* Smaller text for mobile */
+    }
+}

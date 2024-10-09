@@ -11,6 +11,7 @@ import Developer from './pages/Developer';
 import Analysis from './pages/Analysis';
 import Stories from './pages/Stories';
 import CookieConsent from './pages/CookieConsent';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 function App() {
   const [theme, setTheme] = useState('light');
@@ -37,6 +38,8 @@ function App() {
           <Route path="/analysis" element={<Analysis theme={theme}/>} />
           <Route path="/stories" element={<Stories theme={theme}/>} />
           <Route path="/cookie-policy" element={<CookieConsent/>} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
+
 
         </Routes>
       </div>

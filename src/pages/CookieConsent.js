@@ -1,42 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 import '../CookieConsent.css'; // Import CSS for styling
 
 const CookieConsent = () => {
+  const [isVisible, setIsVisible] = useState(true);
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  const handleAccept = () => {
+    setIsVisible(false);
+    navigate('/'); // Redirect to home page
+  };
+
   return (
-    <div className="cookie-consent">
-      <h3>Cookie Consent</h3>
-      <p>
-        At WitnessWave, we value your privacy and want to be transparent about our use of cookies on our website. 
-        Cookies are small text files that are placed on your device when you visit a website. They help enhance your 
-        experience by allowing the website to remember your actions and preferences (such as login details and language) 
-        over a period of time.
-      </p>
-      <p>
-        <strong>We do not collect cookies or personal data.</strong> Our website is designed to function smoothly without collecting 
-        any personally identifiable information. 
-      </p>
-      <p>However, some third-party features and integrations we use may employ 
-        cookies. These might include analytics tools and social media sharing buttons, which help us understand how visitors 
-        interact with our site and improve our services.
+    isVisible && (
+      <div className="privacy-policy cookie-consent"> {/* Apply the same CSS class */}
+        <h3>Cookie Consent</h3>
+        <p>
+          We are committed to ensuring that your privacy is protected. This website does not collect cookies or personal data from users. Our primary aim is to provide you with an excellent experience while you navigate through our site.
         </p>
-      <p>
-        By using our site, you agree to the use of cookies in accordance with this Cookie Policy. If you prefer to 
-        restrict, block, or delete cookies from this site, you can do this through your browser settings. Each browser is 
-        different, so please check your browser's help menu for specific instructions. 
-      </p>
-      <p>
-        It’s important to note that blocking cookies may affect the functionality of our website and your experience 
-        while using it. Some features may not work properly without cookies enabled.
-      </p>
-      <p>
-        For more information on how we handle your data and your rights, please refer to our <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>. 
-        Here, you will find detailed information about the types of data we collect, how we use it, and how we protect your privacy.
-      </p>
-      <p>
-        If you have any questions or concerns about our use of cookies or our privacy practices, please feel free to 
-        contact us. We are here to help and ensure your experience with us is as smooth and enjoyable as possible.
-      </p>
-    </div>
+        <p>
+          While we do not actively use cookies to gather personal information, it is important to note that certain features of our site may require cookies to function effectively. These cookies may be used to enhance your user experience by remembering your preferences and settings during your visit. 
+        </p>
+        <p>
+          Cookies are small text files placed on your device by the websites you visit. They allow the website to recognize your device and store some information about your preferences or past actions. For instance, cookies can help us keep you logged in or remember the items in your shopping cart.
+        </p>
+        <p>
+          By continuing to use our site, you consent to the use of cookies as described above. However, if you prefer, you can modify your browser settings to decline cookies or notify you when cookies are being used. Please be aware that disabling cookies may affect your experience on our site, as some features may not function properly without them.
+        </p>
+        <p>
+          For more details on how we handle your data and your rights, please refer to our{' '}
+          <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
+        </p>
+        <button onClick={handleAccept} className="cookie-button">
+          Got it!
+        </button>
+      </div>
+    )
   );
 };
 
