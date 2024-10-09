@@ -1,0 +1,124 @@
+/* Light Theme Styles */
+.contact-container.light {
+    background-color: #ffffff;
+    color: #333;
+  }
+  
+  .form-card.light {
+    background-color: #f9f9f9;
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pgp-section.light {
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  .submit-button.light {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .submit-button.light:hover {
+    background-color: #45a049;
+  }
+  
+  /* Dark Theme Styles */
+  .contact-container.dark {
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+  }
+  
+  .form-card.dark {
+    background-color: #2c2c2c;
+    color: #f5f5f5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .pgp-section.dark {
+    background-color: #2c2c2c;
+    color: #f5f5f5;
+  }
+  
+  .submit-button.dark {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .submit-button.dark:hover {
+    background-color: #45a049;
+  }
+  
+  /* Shared styles */
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .contact-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .form-card {
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 30px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  .submit-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .submit-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .pgp-section {
+    text-align: center;
+    max-width: 600px;
+    margin-top: 20px;
+  }
+  
+  .pgp-section a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .pgp-section a:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import '../styles.css'; // Import the same CSS used previously
+import '../contact.css'; // Import the CSS for styling
 
-const Contact = () => {
+const Contact = ({ theme = 'light' }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -24,11 +24,11 @@ const Contact = () => {
   };
 
   return (
-    <div className="contact-container">
+    <div className={`contact-container ${theme}`}>
       <h1 className="contact-title">Contact Us</h1>
       
       {/* Contact Form */}
-      <div className="form-card">
+      <div className={`form-card ${theme}`}>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="name">Name:</label>
@@ -69,7 +69,7 @@ const Contact = () => {
       </div>
 
       {/* PGP Key Section */}
-      <div className="pgp-section">
+      <div className={`pgp-section ${theme}`}>
         <h2>PGP Public Key</h2>
         <p>For secure communication, you can encrypt your message using our PGP public key:</p>
         <p>
