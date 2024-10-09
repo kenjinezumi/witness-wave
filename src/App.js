@@ -25,10 +25,10 @@ function App() {
       <div className="paper">
         <Routes>
           <Route path="/" element={<Home theme={theme} />} />
-          <Route path="/submit" element={<SubmitEvent />} />
+          <Route path="/submit" element={<SubmitEvent theme={theme}/>} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
-          <Route path="/map-explorer" element={<MapExplorer />} />
+          <Route path="/map-explorer" element={<MapExplorer theme={theme}/>} />
         </Routes>
       </div>
       <Footer theme={theme} handleThemeClick={handleThemeClick} />

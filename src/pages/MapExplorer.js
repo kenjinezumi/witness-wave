@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import '../styles.css';
 
 const countries = [
   "United States", "Canada", "United Kingdom", "France", "Germany", "Australia", "India", "China", "Brazil", "South Africa"
 ];
 
-const MapExplorer = () => {
+const MapExplorer = ({ theme = 'light' }) => {
   const [selectedCountry, setSelectedCountry] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [mapCenter, setMapCenter] = useState([51.505, -0.09]); // Default to London
   const [searchLocation, setSearchLocation] = useState(null);
+
+  useEffect(() => {
+    console.log('Current theme:', theme);
+  }, [theme]);
 
   // Function to query Nominatim API for geocoding
   const searchLocationAPI = async (query) => {
@@ -44,9 +49,11 @@ const MapExplorer = () => {
   };
 
   // Handle search input (city, postcode, street, etc.)
-  const handleSearch = async () => {
-    if (searchQuery) {
-      const coords = await searchLocationAPI(searchQuery);
+  const handleSearch = async (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    if (query) {
+      const coords = await searchLocationAPI(query);
       if (coords) {
         setMapCenter([coords.lat, coords.lon]); // Center the map on the search result
         setSearchLocation(coords);
@@ -64,36 +71,54 @@ const MapExplorer = () => {
   };
 
   return (
-    <div className="map-explorer">
-      {/* Country Dropdown */}
-      <div className="location-picker">
-        <label>Select a Country:</label>
-        <select value={selectedCountry} onChange={handleCountrySelect}>
-          <option value="">-- Select Country --</option>
-          {countries.map((country) => (
-            <option key={country} value={country}>{country}</option>
-          ))}
-        </select>
-      </div>
-
-      {/* Search Input */}
-      <div className="search-box">
-        <label>Or Search by City, Postcode, or Street:</label>
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Enter city, postcode, or street"
-        />
-        <button onClick={handleSearch}>Search</button>
+    <div className={`paper ${theme}`}>
+      <div className="filter-section">
+        <div className="filter-item">
+          <label>Date From:</label>
+          <input
+            type="date"
+            className={`filter-input ${theme}`}
+          />
+        </div>
+        <div className="filter-item">
+          <label>Date To:</label>
+          <input
+            type="date"
+            className={`filter-input ${theme}`}
+          />
+        </div>
+        <div className="filter-item">
+          <label>Incident Type:</label>
+          <select className={`filter-select ${theme}`}>
+            <option value="">All Types</option>
+            <option value="physical-violence">Physical Violence</option>
+            <option value="verbal-abuse">Verbal Abuse</option>
+            <option value="racial-discrimination">Racial Discrimination</option>
+          </select>
+        </div>
+        <div className="filter-item">
+          <label>Select a Location:</label>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={handleSearch}
+            placeholder="Enter city, postcode, or street"
+            className={`filter-input ${theme}`}
+          />
+        </div>
       </div>
 
       {/* Map Section */}
       <div className="map-section">
-        <MapContainer center={mapCenter} zoom={5} style={{ height: '500px', width: '100%' }}>
+        <MapContainer center={mapCenter} zoom={5} style={{ height: '500px', width: '100%' }}
+          className={theme === 'dark' ? 'dark-map' : 'light-map'}>
           <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; OpenStreetMap contributors'
+            url={
+              theme === 'dark'
+                ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png'
+                : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png'
+            }
+            attribution='&copy; OpenStreetMap contributors & CartoDB'
           />
           {searchLocation && <Marker position={searchLocation}></Marker>}
           <SetMapCenter center={mapCenter} />
