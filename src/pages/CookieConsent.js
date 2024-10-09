@@ -31,9 +31,11 @@ const CookieConsent = () => {
           For more details on how we handle your data and your rights, please refer to our{' '}
           <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
         </p>
-        <button onClick={handleAccept} className="cookie-button">
-          Got it!
-        </button>
+        <div className="accept-button-container">
+          <button onClick={handleAccept} className="accept-button">
+            Got it!
+          </button>
+        </div>
       </div>
     )
   );

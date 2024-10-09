@@ -1,5 +1,5 @@
-/* General styling for the cookie consent */
-.cookie-consent {
+/* General styling for the Terms and Services */
+.terms-and-services {
     padding: 20px;
     margin: 20px auto;
     max-width: 800px;
@@ -10,38 +10,58 @@
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-body.dark .cookie-consent {
+body.dark .terms-and-services {
     background-color: rgba(30, 30, 30, 0.9); /* Dark background for dark theme */
     color: #f9f9f9; /* Text color for dark theme */
 }
 
 /* Headings */
-.cookie-consent h3 {
+.terms-and-services h1 {
     font-size: 2em;
     margin-bottom: 10px;
     text-align: center;
     color: inherit; /* Inherit color based on theme */
 }
 
+.terms-and-services h2 {
+    font-size: 1.5em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: inherit; /* Inherit color based on theme */
+}
+
 /* Paragraphs */
-.cookie-consent p {
+.terms-and-services p {
     font-size: 1em;
     line-height: 1.6;
     margin-bottom: 15px;
     color: inherit; /* Inherit color based on theme */
 }
 
+/* List styles */
+.terms-and-services ul {
+    padding-left: 20px; /* Indentation for lists */
+}
+
+.terms-and-services li {
+    margin-bottom: 8px; /* Space between list items */
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
-    .cookie-consent {
+    .terms-and-services {
         padding: 15px; /* Adjust padding for smaller screens */
     }
 
-    .cookie-consent h3 {
+    .terms-and-services h1 {
         font-size: 1.8em; /* Smaller heading for mobile */
     }
 
-    .cookie-consent p {
+    .terms-and-services h2 {
+        font-size: 1.4em; /* Smaller subheading for mobile */
+    }
+
+    .terms-and-services p {
         font-size: 0.9em; /* Smaller text for mobile */
     }
 }
@@ -49,9 +69,9 @@ body.dark .cookie-consent {
 .accept-button-container {
     text-align: center; /* Center the button */
     margin-top: 20px; /* Add spacing above the button */
-  }
-  
-  .accept-button {
+}
+
+.accept-button {
     background-color: #007BFF; /* Button color */
     color: white; /* Text color */
     border: none; /* No border */
@@ -60,9 +80,8 @@ body.dark .cookie-consent {
     cursor: pointer; /* Pointer cursor on hover */
     font-size: 16px; /* Font size */
     transition: background-color 0.3s ease; /* Transition for hover effect */
-  }
-  
-  .accept-button:hover {
+}
+
+.accept-button:hover {
     background-color: #0056b3; /* Darker shade on hover */
-  }
-  
+}

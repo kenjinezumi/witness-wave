@@ -68,3 +68,22 @@
     }
   }
   
+  .accept-button-container {
+    text-align: center; /* Center the button */
+    margin-top: 20px; /* Add spacing above the button */
+}
+
+.accept-button {
+    background-color: #007BFF; /* Button color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding for button */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s ease; /* Transition for hover effect */
+}
+
+.accept-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}

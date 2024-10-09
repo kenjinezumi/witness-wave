@@ -2,6 +2,11 @@ import React from 'react';
 import '../PrivacyPolicy.css'; // Import CSS for styling
 
 const PrivacyPolicy = () => {
+  const handleAccept = () => {
+    // Redirect to home or handle the acceptance logic
+    window.location.href = '/'; // Redirect to home page
+  };
+
   return (
     <div className="privacy-policy">
       <h1>Privacy Policy for WitnessWave</h1>
@@ -64,9 +69,14 @@ const PrivacyPolicy = () => {
 
       <h2>Contact Us</h2>
       <p>
-  If you have any questions about this Privacy Policy, please contact us at <a href="mailto:kenjitsuchiya1@gmail.com">kenjitsuchiya1@gmail.com</a>.
-</p>
+        If you have any questions about this Privacy Policy, please contact us at <a href="mailto:kenjitsuchiya1@gmail.com">kenjitsuchiya1@gmail.com</a>.
+      </p>
 
+      <div className="accept-button-container">
+        <button onClick={handleAccept} className="accept-button">
+          Got it!
+        </button>
+      </div>
     </div>
   );
 };
