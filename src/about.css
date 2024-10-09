@@ -1,0 +1,103 @@
+/* General container for the about section */
+.about-container {
+    max-width: 900px; /* Limit the max width to control readability */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px; /* Padding for some breathing room inside the container */
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+  
+  /* Light Theme Styles */
+  .about-container.light {
+    background-color: #ffffff;
+    color: #333;
+  }
+  
+  .about-container.light p {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .about-container.light strong {
+    color: #000;
+  }
+  
+  .about-container.light .about-title {
+    text-align: center;
+    color: #222;
+    margin-bottom: 20px;
+    font-size: 32px; /* Larger title for better readability */
+  }
+  
+  .about-container.light .about-subtitle {
+    color: #444;
+    margin-top: 20px;
+    font-size: 24px;
+  }
+  
+  /* Dark Theme Styles */
+  .about-container.dark {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+  }
+  
+  .about-container.dark p {
+    font-size: 16px;
+    color: #ccc;
+  }
+  
+  .about-container.dark strong {
+    color: #fff;
+  }
+  
+  .about-container.dark .about-title {
+    text-align: center;
+    color: #f0f0f0;
+    margin-bottom: 20px;
+    font-size: 32px;
+  }
+  
+  .about-container.dark .about-subtitle {
+    color: #ddd;
+    margin-top: 20px;
+    font-size: 24px;
+  }
+  
+  /* Responsive adjustments for mobile devices */
+  @media (max-width: 768px) {
+    .about-container {
+      padding: 15px;
+    }
+  
+    .about-container p {
+      font-size: 14px; /* Slightly smaller text for smaller screens */
+    }
+  
+    .about-container .about-title {
+      font-size: 28px; /* Reduce the title size on mobile for better layout */
+    }
+  
+    .about-container .about-subtitle {
+      font-size: 20px; /* Reduce subtitle size on smaller screens */
+    }
+  }
+  
+  /* Extra large screens */
+  @media (min-width: 1200px) {
+    .about-container {
+      max-width: 1200px; /* Increase max width on larger screens for better utilization */
+    }
+  
+    .about-container p {
+      font-size: 18px; /* Slightly larger text for large screens */
+    }
+  
+    .about-container .about-title {
+      font-size: 36px;
+    }
+  
+    .about-container .about-subtitle {
+      font-size: 28px;
+    }
+  }
+  

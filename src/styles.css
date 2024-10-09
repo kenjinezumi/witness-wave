@@ -288,3 +288,100 @@ body.dark .footer {
 .theme-option:hover {
   background-color: #e2e6ea;
 }
+.sidebar {
+  width: 300px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  overflow-y: auto;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Fullscreen Map Section */
+.map-section-fullscreen {
+  flex: 1;
+  height: 100%;
+  position: relative;
+}
+
+.submit-event-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.map-container {
+  width: 100%;
+  height: 400px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-card {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.submit-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Space between accordion and submit button */
+}
+
+.submit-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+.submit-event-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.add-event-title {
+  color: black;
+  text-align: center;
+  font-size: 24px;
+  margin: 20px 0;
+}
+
