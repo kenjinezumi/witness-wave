@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaWhatsapp, FaTelegram, FaSms, FaEnvelope, FaInstagram, FaTwitter, FaTiktok } from 'react-icons/fa'; // Import necessary icons
-import '../Footer.css';
+import '../styles/Footer.css';
 
 const Footer = ({ theme, handleThemeClick }) => {
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import countries from './countries.json'; // List of countries
-import '../Stories.css';
+import '../styles/Stories.css';
 
 const storiesData = [
     {

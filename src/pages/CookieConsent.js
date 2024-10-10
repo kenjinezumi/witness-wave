@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
-import '../CookieConsent.css'; // Import CSS for styling
+import '../styles/CookieConsent.css'; // Import CSS for styling
 
 const CookieConsent = () => {
   const [isVisible, setIsVisible] = useState(true);
