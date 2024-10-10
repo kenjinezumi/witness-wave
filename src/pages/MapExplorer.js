@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, useMap, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import '../styles.css';
+import countriesData from '../data/countries.json'; // Corrected import
 
 const countries = [
   "United States", "Canada", "United Kingdom", "France", "Germany", "Australia", "India", "China", "Brazil", "South Africa"
@@ -12,6 +13,8 @@ const MapExplorer = ({ theme = 'light' }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [mapCenter, setMapCenter] = useState([51.505, -0.09]); // Default to London
   const [searchLocation, setSearchLocation] = useState(null);
+  const [countriesGeoJSON, setCountriesGeoJSON] = useState(null); // GeoJSON for countries
+  const [countryBounds, setCountryBounds] = useState(null); // Bounding box for selected country
 
   useEffect(() => {
     console.log('Current theme:', theme);
@@ -37,6 +40,23 @@ const MapExplorer = ({ theme = 'light' }) => {
     }
   };
 
+  useEffect(() => {
+    const fetchCountriesGeoJSON = async () => {
+      try {
+        const response = await fetch('https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson');
+        if (!response.ok) {
+          throw new Error('Failed to fetch GeoJSON data');
+        }
+        const data = await response.json();
+        setCountriesGeoJSON(data);
+      } catch (error) {
+        console.error('Error fetching countries GeoJSON:', error);
+      }
+    };
+
+    fetchCountriesGeoJSON();
+  }, []);
+
   // Handle country selection from dropdown
   const handleCountrySelect = async (e) => {
     const country = e.target.value;
@@ -59,6 +79,22 @@ const MapExplorer = ({ theme = 'light' }) => {
         setSearchLocation(coords);
       }
     }
+  };
+
+  // Function to highlight the selected country in the GeoJSON layer
+  const highlightCountry = (feature) => ({
+    color: '#cccccc', // Default color for all countries
+    weight: 1,
+    fillOpacity: 0.2,
+  });
+
+  // Handle events for each country feature in GeoJSON (no click event for highlighting)
+  const onEachCountryFeature = (feature, layer) => {
+    layer.on({
+      click: () => {
+        console.log('Country clicked:', feature.properties.ADMIN); // Just log the country name when clicked
+      },
+    });
   };
 
   // Helper component to update map center dynamically
@@ -101,7 +137,7 @@ const MapExplorer = ({ theme = 'light' }) => {
           <input
             type="text"
             value={searchQuery}
-            onChange={handleSearch}
+            onChange={handleSearch} // Correctly referenced function
             placeholder="Enter city, postcode, or street"
             className={`filter-input ${theme}`}
           />
@@ -109,9 +145,13 @@ const MapExplorer = ({ theme = 'light' }) => {
       </div>
 
       {/* Map Section */}
-      <div className="map-section">
-        <MapContainer center={mapCenter} zoom={5} style={{ height: '500px', width: '100%' }}
-          className={theme === 'dark' ? 'dark-map' : 'light-map'}>
+      <div className="map-section-explorer">
+        <MapContainer
+          center={mapCenter}
+          zoom={5}
+          style={{ height: '1000px', width: '100%' }}  // Increased height here
+          className={theme === 'dark' ? 'dark-map' : 'light-map'}
+        >
           <TileLayer
             url={
               theme === 'dark'
@@ -120,6 +160,9 @@ const MapExplorer = ({ theme = 'light' }) => {
             }
             attribution='&copy; OpenStreetMap contributors & CartoDB'
           />
+           {countriesGeoJSON && (
+            <GeoJSON data={countriesGeoJSON} style={highlightCountry} onEachFeature={onEachCountryFeature} />
+          )}
           {searchLocation && <Marker position={searchLocation}></Marker>}
           <SetMapCenter center={mapCenter} />
         </MapContainer>
