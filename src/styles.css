@@ -66,13 +66,23 @@ h1, h2, h3 {
 
 /* Map Section */
 .map-section {
-  height: 500px;
+  height: 800px;
   width: 100%;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease;
 }
+
+.map-section-explorer {
+  height: 1000px;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
 
 .map-section:hover {
   transform: scale(1.02);

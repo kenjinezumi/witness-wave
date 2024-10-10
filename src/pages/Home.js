@@ -4,9 +4,9 @@ import { MapContainer, TileLayer, Marker, Popup, useMap, GeoJSON } from 'react-l
 import * as echarts from 'echarts';
 import 'leaflet/dist/leaflet.css';
 import '../styles.css';
-import countries from './countries.json'; // List of countries
-import darkTheme from './darkTheme.json';
-import lightTheme from './lightTheme.json';
+import countries from '../data/countries.json'; 
+import darkTheme from '../themes/darkTheme.json';
+import lightTheme from '../themes/lightTheme.json';
 
 echarts.registerTheme('dark', darkTheme);
 echarts.registerTheme('light', lightTheme);
