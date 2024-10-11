@@ -27,9 +27,9 @@ const Header = () => {
             <li>
               <Link to="/stories" className={location.pathname === '/stories' ? 'active-link' : ''}>Their Stories</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/analysis" className={location.pathname === '/analysis' ? 'active-link' : ''}>Analysis</Link>
-            </li>
+            </li> */}
             <li>
               <Link to="/about" className={location.pathname === '/about' ? 'active-link' : ''}>About</Link>
             </li>

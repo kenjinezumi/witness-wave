@@ -77,17 +77,17 @@ const SubmitEvent = ({ theme }) => {
         </MapContainer>
       </div>
 
-      <h3 className={`add-event-title ${theme}`}>Add an Event</h3>
+      <h3 className={`add-event-title ${theme}`}>Tell your Story</h3>
 
       <div className={`form-card ${theme}`}>
         <form onSubmit={handleSubmit}>
           <Accordion defaultActiveKey="0" className={theme}>
             {/* Event Details */}
             <Accordion.Item eventKey="0">
-              <Accordion.Header>Event Details</Accordion.Header>
+              <Accordion.Header>Story Details</Accordion.Header>
               <Accordion.Body>
                 <div className="form-group">
-                  <label>Event Name:</label>
+                  <label>Story Title:</label>
                   <input
                     type="text"
                     name="eventName"
@@ -98,7 +98,7 @@ const SubmitEvent = ({ theme }) => {
                   />
                 </div>
                 <div className="form-group">
-                  <label>Date:</label>
+                  <label>Date of Occurence:</label>
                   <input
                     type="date"
                     name="date"
