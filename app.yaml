@@ -1,0 +1,12 @@
+runtime: python39  # Using Python runtime since GAE doesn’t have a specific "static" runtime.
+env: standard
+
+handlers:
+  # Serve static files (JS, CSS, images, etc.) from the "build" directory
+  - url: /static
+    static_dir: build/static
+
+  # Serve the main index.html file for all other URLs (for client-side routing)
+  - url: /.*
+    static_files: build/index.html
+    upload: build/index.html

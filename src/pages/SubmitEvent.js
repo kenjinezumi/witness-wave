@@ -77,17 +77,17 @@ const SubmitEvent = ({ theme }) => {
         </MapContainer>
       </div>
 
-      <h3 className={`add-event-title ${theme}`}>Add an Event</h3>
+      <h3 className={`add-event-title ${theme}`}>Tell your Story</h3>
 
       <div className={`form-card ${theme}`}>
         <form onSubmit={handleSubmit}>
           <Accordion defaultActiveKey="0" className={theme}>
             {/* Event Details */}
             <Accordion.Item eventKey="0">
-              <Accordion.Header>Event Details</Accordion.Header>
+              <Accordion.Header>Story Details</Accordion.Header>
               <Accordion.Body>
                 <div className="form-group">
-                  <label>Event Name:</label>
+                  <label>Story Title:</label>
                   <input
                     type="text"
                     name="eventName"
@@ -98,7 +98,7 @@ const SubmitEvent = ({ theme }) => {
                   />
                 </div>
                 <div className="form-group">
-                  <label>Date:</label>
+                  <label>Date of Occurence:</label>
                   <input
                     type="date"
                     name="date"
@@ -127,6 +127,8 @@ const SubmitEvent = ({ theme }) => {
                     onChange={handleInputChange}
                     required
                     className={theme}
+                    rows="8" // Increase the rows to make the textarea larger
+                    style={{ fontSize: '16px', padding: '10px', width: '100%' }} // Additional styling
                   />
                 </div>
                 <div className="form-group">
@@ -163,6 +165,13 @@ const SubmitEvent = ({ theme }) => {
                     <option value="">Select Gender</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
+                    <option value="non-binary">Non-binary</option>
+                    <option value="transgender-male">Transgender Male</option>
+                    <option value="transgender-female">Transgender Female</option>
+                    <option value="gender-fluid">Gender Fluid</option>
+                    <option value="agender">Agender</option>
+                    <option value="other">Other</option>
+                    <option value="prefer-not-to-say">Prefer not to say</option>
                   </select>
                 </div>
 
@@ -176,11 +185,22 @@ const SubmitEvent = ({ theme }) => {
                     className={theme}
                   >
                     <option value="">Select Ethnicity</option>
-                    <option value="black">Black</option>
-                    <option value="hispanic">Hispanic</option>
-                    <option value="white">White</option>
-                    <option value="asian">Asian</option>
+                    <option value="black-african">Black - African</option>
+                    <option value="black-caribbean">Black - Caribbean</option>
+                    <option value="black-other">Black - Other</option>
+                    <option value="hispanic-latino">Hispanic / Latino</option>
+                    <option value="white-european">White - European</option>
+                    <option value="white-north-american">White - North American</option>
+                    <option value="white-other">White - Other</option>
+                    <option value="asian-south">Asian - South (Indian, Pakistani, Bangladeshi)</option>
+                    <option value="asian-east">Asian - East (Chinese, Korean, Japanese)</option>
+                    <option value="asian-southeast">Asian - Southeast (Vietnamese, Filipino, Thai)</option>
+                    <option value="middle-eastern-north-african">Middle Eastern / North African (MENA)</option>
+                    <option value="native-american">Native American / First Nations</option>
+                    <option value="pacific-islander">Pacific Islander</option>
+                    <option value="multiracial">Multiracial / Mixed</option>
                     <option value="other">Other</option>
+                    <option value="prefer-not-to-say">Prefer not to say</option>
                   </select>
                 </div>
               </Accordion.Body>
