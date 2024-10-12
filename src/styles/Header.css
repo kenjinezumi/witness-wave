@@ -1,15 +1,17 @@
+/* Header Styles */
 .header {
-  background-color: #fff; /* Default light theme background */
+  background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 10px 20px;
-  transition: background-color 0.3s ease; /* Smooth transition for theme changes */
+  transition: background-color 0.3s ease;
+  position: relative;
+  z-index: 8000; /* Increased z-index */
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
 
 .logo-container {
@@ -25,81 +27,83 @@
 .logo-text {
   font-size: 1.5em;
   font-weight: bold;
-  color: #333; /* Default light theme text color */
+  color: #333;
   text-decoration: none;
 }
 
-/* Hamburger menu for mobile */
-.menu-container {
-  position: relative;
-
-}
-
-.menu-toggle {
-  display: none;
-}
-
-.menu-icon {
-  display: none;
-  cursor: pointer;
-}
-
-.menu-icon .hamburger {
-  width: 25px;
-  height: 3px;
-  background-color: transparent; /* Make navbar background transparent */
-  margin: 5px 0;
-  transition: 0.4s;
-}
-
-/* Navigation links */
+/* Navigation Links */
 .nav-links {
   display: flex;
   list-style: none;
   gap: 20px;
-  
+  z-index: 1000; /* Ensure nav-links stay on top */
 }
 
 .nav-links a {
   text-decoration: none;
-  color: #333; /* Default light theme link color */
+  color: #333;
   font-weight: 500;
+  padding: 10px;
   transition: color 0.3s;
-  padding: 10px; /* Add padding for better click area */
 }
 
 .nav-links a:hover {
-  color: #007BFF; /* Hover color */
+  color: #007BFF;
 }
 
 .nav-links a.active-link {
   font-weight: bold;
-  border-bottom: 2px solid #007BFF; /* Active link underline */
+  border-bottom: 2px solid #007BFF;
 }
 
-/* Responsive styles */
+/* Hamburger Menu for Mobile */
+.menu-icon {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 18px;
+  z-index: 1000; /* Ensure hamburger menu stays on top */
+}
+
+.menu-icon .hamburger {
+  width: 100%;
+  height: 3px;
+  background-color: #333;
+  transition: background-color 0.4s;
+}
+
+/* Mobile Menu Container */
 @media (max-width: 768px) {
   .menu-icon {
-    display: block;
+    display: flex; /* Show hamburger icon on mobile */
   }
 
   .nav-links {
     display: none;
     position: absolute;
-    top: 100%;
+    top: 60px;
     right: 0;
-    background-color: #fff; /* Default light theme dropdown background */
+    background-color: #fff;
     width: 200px;
     flex-direction: column;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 10px;
+    z-index: 1000; /* Ensure nav-links stay on top */
   }
 
-  .menu-toggle:checked + .menu-icon + .nav-links {
+  /* Show menu when the open class is added */
+  .nav-links.open {
     display: flex;
+  }
+
+  .hamburger {
+    background-color: #333;
   }
 }
 
+/* Responsive Logo Adjustments */
 @media (max-width: 480px) {
   .logo-text {
     font-size: 1.2em;
@@ -107,53 +111,44 @@
 
   .nav-links {
     width: 100%;
-    right: 0;
     padding: 15px;
   }
 }
 
-/* Dark theme */
+/* Dark Theme */
 body.dark .header {
-  background-color: #1e1e1e; /* Dark theme background */
+  background-color: #1e1e1e;
 }
 
 body.dark .logo-text {
-  color: #f5f5f5; /* Dark theme background */
+  color: #f5f5f5;
 }
 
 body.dark .nav-links a {
-  color: #f5f5f5; /* Dark theme link color */
+  color: #f5f5f5;
 }
 
 body.dark .nav-links a:hover {
-  color: #007BFF; /* Hover color remains the same */
+  color: #007BFF;
 }
 
 body.dark .menu-icon .hamburger {
-  background-color: #f5f5f5; /* Dark theme icon color */
+  background-color: #f5f5f5;
 }
 
-body.dark .nav-links {
-  background-color: transparent; /* Make navbar background transparent */
-}
-
-/* Light theme */
+/* Light Theme */
 body.light .header {
-  background-color: #fff; /* Light theme background */
+  background-color: #fff;
 }
 
 body.light .nav-links a {
-  color: #333; /* Light theme link color */
+  color: #333;
 }
 
 body.light .nav-links a:hover {
-  color: #007BFF; /* Hover color remains the same */
+  color: #007BFF;
 }
 
 body.light .menu-icon .hamburger {
-  background-color: #333; /* Light theme icon color */
-}
-
-body.light .nav-links {
-  background-color: #fff; /* Light theme dropdown background */
+  background-color: #333;
 }

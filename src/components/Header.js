@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import '../styles/Header.css'; 
-import logo from '../assets/logo.png'; 
+import '../styles/Header.css';
+import logo from '../assets/logo.png';
 
 const Header = () => {
-  const location = useLocation(); // Get the current location
+  const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to track if menu is open
+
+  // Function to toggle the menu
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <header className="header">
@@ -14,7 +20,13 @@ const Header = () => {
           <Link to="/" className="logo-text">WitnessWave</Link>
         </div>
         <div className="menu-container">
-          <ul className="nav-links">
+          <div className="menu-icon" onClick={toggleMenu}>
+            <div className="hamburger"></div>
+            <div className="hamburger"></div>
+            <div className="hamburger"></div>
+          </div>
+          {/* Conditional class based on whether menu is open */}
+          <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
             <li>
               <Link to="/" className={location.pathname === '/' ? 'active-link' : ''}>Home</Link>
             </li>
@@ -27,9 +39,6 @@ const Header = () => {
             <li>
               <Link to="/stories" className={location.pathname === '/stories' ? 'active-link' : ''}>Their Stories</Link>
             </li>
-            {/* <li>
-              <Link to="/analysis" className={location.pathname === '/analysis' ? 'active-link' : ''}>Analysis</Link>
-            </li> */}
             <li>
               <Link to="/about" className={location.pathname === '/about' ? 'active-link' : ''}>About</Link>
             </li>
