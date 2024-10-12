@@ -43,7 +43,7 @@ function App() {
               <img src={betaBanner} alt="Beta Version" style={{ width: '100%', maxheigth:'30px', maxWidth: '400px', marginBottom: '20px' }} />
 
               <p>
-                This is an early stage version of the app and it's not yet connected to the backend. 
+                This is an early stage version (V.0.0.0) of the app and it's not yet connected to the backend. 
                 We're using this version to validate the concept and gather initial feedback. 
                 Please note that multiple languages and localization will be added in future versions.
               </p>
