@@ -58,7 +58,7 @@ const SubmitEvent = ({ theme }) => {
 
   return (
     <div className={`submit-event-container ${theme}`}>
-      <div className="map-container">
+      {/* <div className="map-container">
         <MapContainer
           center={[51.505, -0.09]}
           zoom={13}
@@ -75,7 +75,7 @@ const SubmitEvent = ({ theme }) => {
           <MapClickHandler />
           {position && <Marker position={position} />}
         </MapContainer>
-      </div>
+      </div> */}
 
       <h3 className={`add-event-title ${theme}`}>Tell your Story</h3>
 
