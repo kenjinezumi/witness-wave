@@ -10,7 +10,6 @@ import MapExplorer from './pages/MapExplorer';
 import Developer from './pages/Developer';
 // import Analysis from './pages/Analysis';
 import Stories from './pages/Stories';
-import betaBanner from './beta-banner.png';
 import CookieConsent from './pages/CookieConsent';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsAndServices from './pages/TermsAndServices';
@@ -40,17 +39,14 @@ function App() {
           <div className="popup">
             <div className="popup-content">
               <h2>Early Version</h2>
-              <img src={betaBanner} alt="Beta Version" style={{ width: '100%', maxheigth:'30px', maxWidth: '400px', marginBottom: '20px' }} />
 
               <p>
                 This is an early stage version (V.0.0.0) of the app and it's not yet connected to the backend. 
                 We're using this version to validate the concept and gather initial feedback. 
                 Please note that multiple languages and localization will be added in future versions.
               </p>
-              <p>
-          And yes, we know—only a narcissistic wanker would put a picture of himself on a popup. 🤣
-        </p>
-              <button onClick={handleClosePopup}>Close it as you're tired of my face.</button>
+            
+              <button onClick={handleClosePopup}>Close</button>
             </div>
           </div>
         )}

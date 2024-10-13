@@ -194,33 +194,26 @@ const Home = ({ theme = 'light' }) => {
 
       {/* Map Section */}
       <div className="map-section">
-        <MapContainer 
-          center={mapCenter} 
-          minZoom={3} 
-          maxZoom={8} 
-          zoom={5} 
-          style={{ height: '100%', width: '100%' }}
-          className={theme === 'dark' ? 'dark-map' : 'light-map'}
-        >
-          <TileLayer
-            url={
-              theme === 'dark'
-                ? (() => { console.log('Dark theme URL selected'); return 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png?v=1'; })()
-                : (() => { console.log('Light theme URL selected'); return 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png?v=1'; })()
-            }
-            attribution='&copy; OpenStreetMap contributors & CartoDB'
-          />
-          {countriesGeoJSON && (
-            <GeoJSON data={countriesGeoJSON} style={highlightCountry} onEachFeature={onEachCountryFeature} />
-          )}
-          {/* <Marker position={mapCenter}>
-            <Popup>
-              Police Violence Incident <br /> Date: 2023-09-10.
-            </Popup>
-          </Marker> */}
-          {countryBounds && <SetMapBounds bounds={countryBounds} />}
-        </MapContainer>
-      </div>
+  <MapContainer
+    center={mapCenter}
+    zoom={5}
+    style={{ height: '100%', width: '100%' }} /* Make sure to keep height and width 100% */
+    className={theme === 'dark' ? 'dark-map' : 'light-map'}
+  >
+    <TileLayer
+      url={
+        theme === 'dark'
+          ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png?v=1'
+          : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png?v=1'
+      }
+      attribution="&copy; OpenStreetMap contributors & CartoDB"
+    />
+    {countriesGeoJSON && (
+      <GeoJSON data={countriesGeoJSON} style={highlightCountry} onEachFeature={onEachCountryFeature} />
+    )}
+    {countryBounds && <SetMapBounds bounds={countryBounds} />}
+  </MapContainer>
+</div>
 
       {/* Statistics Section */}
       <div className="stats-section">
